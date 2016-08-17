@@ -1,0 +1,223 @@
+﻿@model ranglerz_project.ModelsBO.RestrictUser
+
+@{
+    ViewBag.Title = "userRistrictedView";
+}
+
+
+
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Gentallela Alela! | </title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="~/fonts/font-awesome.min.css" rel="stylesheet">
+    <link href="~/Content/css/animate.min.css" rel="stylesheet">
+
+    <!-- Custom styling plus plugins -->
+    <link href="~/Content/css/custom.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/Content/css/jquery-jvectormap-2.0.1.css" />
+    <link href="~/Content/css/green.css" rel="stylesheet" />
+    <link href="~/Content/css/floatexamples.css" rel="stylesheet" type="text/css" />
+
+    <script src="~/Scripts/js/jquery.min.js"></script>
+ 
+
+</head>
+
+
+
+
+<body class="nav-md">
+
+    <div class="container body">
+
+
+        <div class="main_container">
+
+
+
+
+
+
+
+
+
+
+
+            @{
+                Html.RenderPartial("_Partial");
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- top navigation -->
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+                <div class="">
+                    <div class="page-title">
+                        <div class="title_left">
+                            <h3>
+                                Invoice
+                                <small>
+                                    Some examples to get you started
+                                </small>
+                            </h3>
+                        </div>
+
+                        <div class="title_right">
+                            <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Search for...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button">Go!</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <div class="row">
+
+                        <div class="col-md-12 col-sm-12 col-xs-12">
+                            <div class="x_panel">
+                                <div class="x_title">
+                                    <h2>Daily active users <small>Sessions</small></h2>
+                                    <ul class="nav navbar-right panel_toolbox">
+                                        <li>
+                                            <a href="#"><i class="fa fa-chevron-up"></i></a>
+                                        </li>
+                                        <li class="dropdown">
+                                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li>
+                                                    <a href="#">Settings 1</a>
+                                                </li>
+                                                <li>
+                                                    <a href="#">Settings 2</a>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                        <li>
+                                            <a href="#"><i class="fa fa-close"></i></a>
+                                        </li>
+                                    </ul>
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="x_content">
+                                    <table id="example" class="table table-striped responsive-utilities jambo_table">
+                                        <thead>
+                                            <tr class="headings">
+                                                <th>
+                                                    <input type="checkbox" class="tableflat">
+                                                </th>
+                                                <th>Name </th>
+                                                <th>Username </th>
+                                                <th>Password </th>
+                                                <th>Creation time </th>
+                                                <th>Status </th>
+                                                @if(@Model.edit=="Y")
+                                                { 
+                                                <th>Action </th>
+                                                }
+                                                @if(@Model.delete=="Y")
+                                                { 
+                                                <th class=" no-link last">
+                                                    <span class="nobr">Action</span>
+                                                </th>
+                                                }
+                                            </tr>
+                                        </thead>
+
+                                        <tbody>
+                                           
+
+                                                @foreach (var v in @Model.allusers)
+                                            {
+                                                <tr class="even pointer">
+                                                    <td class="a-center ">
+                                                        <input type="checkbox" class="tableflat">
+                                                    </td>
+                                                    <td class=" ">@v.name</td>
+                                                    <td class=" ">@v.username </td>
+                                                    <td class=" ">
+                                                        @v.password
+                                                    </td>
+                                                    <td class=" ">@v.created_at</td>
+                                                    <td class=" ">@v.is_active</td>
+
+                                                    @if (@Model.edit=="Y")
+                                                    {
+                                                    <td>
+                                                        <a href="~/USER_CRUD/Edit/@v.Id/">Update</a>
+                                                    </td>
+                                                    }
+                                              
+                                                    @if (@Model.delete == "Y")
+                                                    { 
+                                                    <td class=" last">
+                                                        <a href="~/USER_CRUD/Delete/@v.Id/">Delete</a>
+                                                    </td>
+                                                    }
+                                                </tr>
+                                            }
+
+                                            
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br />
+                        <br />
+                        <br />
+
+                    </div>
+                </div>
+                <!-- footer content -->
+                <footer>
+                    <div class="">
+                        <p class="pull-right">
+                            Gentelella Alela! a Bootstrap 3 template by <a>Kimlabs</a>. |
+                            <span class="lead"> <i class="fa fa-paw"></i> Gentelella Alela!</span>
+                        </p>
+                    </div>
+                    <div class="clearfix"></div>
+                </footer>
+                <!-- /footer content -->
+
+            </div>
+            <!-- /page content -->
+        </div>
+
+    </div>
+
+    <script src="~/Scripts/js/bootstrap.min.js"></script>
+
+    <script src="~/Scripts/js/custom.js"></script>
+    
+</body>
+
+</html>
