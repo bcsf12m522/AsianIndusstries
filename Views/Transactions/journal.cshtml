@@ -1,9 +1,9 @@
 ﻿@model List<ranglerz_project.Models.TransactionAccount>
 @{
-    ViewBag.Title = "journal";
+    ViewBag.Title = "journal voucher";
 }
 
-<h2>journal</h2>
+
 
 
 <!DOCTYPE html>
@@ -94,6 +94,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select name="from" required class="form-control chzn-select col-md-7 col-xs-12">
+                                                <option value="">Please select any </option>
                                                 @foreach (var tr in Model)
                                                 {
                                                     <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
@@ -109,6 +110,7 @@
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select name="to" required class="form-control chzn-select col-md-7 col-xs-12">
+                                                <option value="">Please select any </option>
                                                 @foreach (var tr in Model)
                                                 {
                                                     <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
