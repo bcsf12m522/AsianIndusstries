@@ -9,15 +9,17 @@
         <EntityTypeShape EntityType="Database1Model.HeadAccount" Width="1.5" PointX="3" PointY="1.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Database1Model.MainAccount" Width="1.5" PointX="0.75" PointY="1.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Database1Model.SubHeadAccount" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Database1Model.Transaction" Width="1.5" PointX="7.5" PointY="1" IsExpanded="true" />
         <EntityTypeShape EntityType="Database1Model.User" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
         <AssociationConnector Association="Database1Model.FK_HeadAccount_Main" ManuallyRouted="false" />
         <AssociationConnector Association="Database1Model.FK_SubHeadAccount_Head" ManuallyRouted="false" />
-        <AssociationConnector Association="Database1Model.FK_Transaction_head" ManuallyRouted="false" />
         <AssociationConnector Association="Database1Model.FK_SubHeadAccount_Main" ManuallyRouted="false" />
-        <AssociationConnector Association="Database1Model.FK_Transaction_main" ManuallyRouted="false" />
-        <AssociationConnector Association="Database1Model.FK_Transaction_sub_head_id" ManuallyRouted="false" />
-      </Diagram>
+        <EntityTypeShape EntityType="Database1Model.TransactionAccount" Width="1.5" PointX="10.5" PointY="0.75" />
+        <AssociationConnector Association="Database1Model.FK_Table_ToTable" />
+        <AssociationConnector Association="Database1Model.FK_Table_main" />
+        <AssociationConnector Association="Database1Model.FK_Table_ToTable_1" />
+        <EntityTypeShape EntityType="Database1Model.Transaction" Width="1.5" PointX="12.75" PointY="1" />
+        <AssociationConnector Association="Database1Model.FK_Transaction_ToTable" />
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

@@ -16,7 +16,10 @@
                string accCreate =Session["accCreate"].ToString();
            }
 
+@{
 
+    ViewBag.Title = "All Accounts";
+}
 
 <html lang="en">
 
@@ -158,9 +161,9 @@
                                                                                                     
                                                                                                     <div class="inner">
 
-                                                                                                        @foreach (var tr in sub.Transactions)
+                                                                                                        @foreach (var tr in sub.TransactionAccounts)
                                                                                                         {
-                                                                                                            <p style="background-color:#ff0000;color:#fff;padding:5px;">@tr.description</p>
+                                                                                                            <p style="background-color:#ff0000;color:#fff;padding:5px;">@tr.name</p>
                                                                                                         }
 
                                                                                                         <div class="clearfix"></div>  

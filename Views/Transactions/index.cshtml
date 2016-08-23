@@ -1,12 +1,13 @@
-﻿@model List<ranglerz_project.ModelsBO.UserBO>
+﻿@model IEnumerable<ranglerz_project.Models.Transaction>
+
 
 
 @{
-    ViewBag.Title = "ViewUsers";
+
+    ViewBag.Title = "All Trasactions";
 }
 
-
-
+<h2>historyPost</h2>
 
 
 <!DOCTYPE html>
@@ -35,7 +36,7 @@
     <link href="~/Content/css/floatexamples.css" rel="stylesheet" type="text/css" />
 
     <script src="~/Scripts/js/jquery.min.js"></script>
-  
+
 
 </head>
 
@@ -61,67 +62,73 @@
                     <div class="page-title">
                         <div class="title_left">
                             <h3>
-                               All Users
+                                All transactions
                             </h3>
                         </div>
 
-                    
+
                     </div>
                     <div class="clearfix"></div>
+                  
 
                     <div class="row">
 
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>View Users list</h2>
+                                    <h2>View transaction List</h2>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
                                     <table id="example" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
                                             <tr class="headings">
+                                                <th>Main Account</th>
+                                                <th>Date </th>
+                                                <th>Type </th>
+                                                <th>Code </th>
+                                                <th>Description </th>
+                                                <th>From  </th>
+                                                <th>To </th>
+                                                <th>Cr </th>
+                                                <th>Dr </th>
+                                                <th>Balance </th>
 
-                                                <th>Name </th>
-                                                <th>Username </th>
-                                                <th>Password </th>
-                                                <th>Creation time </th>
-                                                <th>Status </th>
-                                                <th>Action </th>
-                                               
                                             </tr>
                                         </thead>
 
                                         <tbody>
-                                           
-                                                @foreach(var v in Model)
-                                                {
+
+                                            @foreach (var t in Model)
+                                            {
+                                                
+                                                
                                                     <tr class="even pointer">
-                                                     
-                                                        <td class=" ">@v.name</td>
-                                                        <td class=" ">@v.username </td>
-                                                        <td class=" ">
-                                                            @v.password 
-                                                        </td>
-                                                        <td class=" ">@v.created_at</td>
-                                                        @if(@v.is_active=="Y")
-                                                        { 
-                                                        <td class=" ">Active</td>
-                                                        }
-                                                        @if (@v.is_active == "N")
-                                                        {
-                                                            <td class=" ">Deactive</td>
-                                                        } 
-                                                        <td>
-                                                            <a href="~/USER_CRUD/Edit/@v.id/">Update</a> &nbsp;&nbsp;&nbsp;
-                                                            <a href="~/USER_CRUD/Delete/@v.id/" onclick="return confirm('Are you sure you want to Delete?')">Delete</a>
-                                                        </td>
-                                                       
-                                                        
+                                                        <td>@t.TransactionAccount.name</td>
+                                                        <td>@t.created_at</td>
+
+
+
+
+                                                        <td>@t.voucher_type</td>
+                                                        <td>@t.voucher_code</td>
+                                                        <td>@t.description</td>
+                                                        <td>@t.from_account</td>
+                                                        <td>@t.to_account</td>
+                                                        <td>@t.cr</td>
+                                                        <td>@t.dr</td>
+                                                        <td>@t.balance</td>
+
+
+
+
+
+
+
                                                     </tr>
                                                 }
-                                           
-                                           
+
+                                            
                                         </tbody>
 
                                     </table>
@@ -135,7 +142,7 @@
 
                     </div>
                 </div>
-             
+
             </div>
             <!-- /page content -->
         </div>
@@ -153,3 +160,11 @@
 </body>
 
 </html>
+
+
+
+
+
+
+
+

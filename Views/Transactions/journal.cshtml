@@ -1,7 +1,9 @@
-﻿@{
-
-    ViewBag.Title = "User Creation";
+﻿@model List<ranglerz_project.Models.TransactionAccount>
+@{
+    ViewBag.Title = "journal";
 }
+
+<h2>journal</h2>
 
 
 <!DOCTYPE html>
@@ -28,8 +30,25 @@
     <link rel="stylesheet" type="text/css" href="~/Content/css/jquery-jvectormap-2.0.1.css" />
     <link href="~/Content/css/green.css" rel="stylesheet" />
     <link href="~/Content/css/floatexamples.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/Content/css/chosen.css" media="all" />
 
-    <script src="~/Scripts/js/jquery.min.js"></script>
+    <script src="~/Scripts/jquery-1.8.3.min.js"></script>
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+
+    <script>
+        //* enchanced select
+        chosen_select = {
+            init: function () {
+                $(".chzn-select").chosen();
+            }
+        };
+
+        $(document).ready(function () {
+            // extended select elements
+            chosen_select.init();
+        });
+    </script>
+
 
 </head>
 
@@ -52,7 +71,7 @@
 
                     <div class="page-title">
                         <div class="title_left">
-                            <h3>Create User Account</h3>
+                            <h3>Journal Voucher</h3>
                         </div>
 
                     </div>
@@ -62,85 +81,60 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>New User Account <small></small></h2>
+                                <h2>New Journal Voucher <small></small></h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="demo-form2" action="@Url.Action("createPost", "USER_CRUD")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                                <form id="demo-form2" action="@Url.Action("journalPost", "Transactions")" method="post" data-parsley-validate class="form-horizontal form-label-left">
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                                            Name <span class="required">*</span>
+                                            From <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" id="first-name" name="name" required class="form-control col-md-7 col-xs-12">
+                                            <select name="from" required class="form-control chzn-select col-md-7 col-xs-12">
+                                                @foreach (var tr in Model)
+                                                {
+                                                    <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
+                                                }
+
+
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                            User Name <span class="required">*</span>
+                                            To <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input type="text" id="last-name" name="username" required class="form-control col-md-7 col-xs-12">
+                                            <select name="to" required class="form-control chzn-select col-md-7 col-xs-12">
+                                                @foreach (var tr in Model)
+                                                {
+                                                    <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
+                                                }
+
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Password </label>
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Amount </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="password">
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="amount" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">User Module Permissions</label>
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Date </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                            <div id="gender" class="btn-group" style="margin-top:8px;">
-
-
-
-                                                <input type="checkbox" name="view" value="view"> &nbsp; View &nbsp;
-
-
-                                                <input type="checkbox" name="create" value="create"> &nbsp; Create  &nbsp;
-
-
-
-
-                                                <input type="checkbox" name="delete" value="delete">&nbsp; Delete &nbsp;
-
-                                                <input type="checkbox" name="edit" value="edit"> &nbsp; Edit &nbsp;
-
-
-                                            </div>
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="date" name="date" required>
                                         </div>
-                                        <div class="clearfix"></div>
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Accounts Module Permissions</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Description </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                            <div id="gender" class="btn-group" style="margin-top:8px;">
-
-
-
-                                                <input type="checkbox" name="accView" value="accView"> &nbsp; View &nbsp;
-
-
-                                                <input type="checkbox" name="accCreate" value="accCreate"> &nbsp; Create  &nbsp;
-
-
-
-
-                                                <input type="checkbox" name="accDelete" value="accDelete">&nbsp; Delete &nbsp;
-
-                                                <input type="checkbox" name="accUpdate" value="accUpdate"> &nbsp; Edit &nbsp;
-
-
-                                            </div>
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="description" required>
                                         </div>
-
-
-
-
+                                    </div>
                                     </div>
                                     <div class="form-group">
 
@@ -150,7 +144,7 @@
                                     <div class="form-group">
                                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 
-                                            <input type="submit" value="Create" class="btn btn-success" />
+                                            <input type="submit" value="Add Voucher" class="btn btn-success" />
                                         </div>
                                     </div>
 
@@ -160,6 +154,8 @@
                     </div>
                 </div>
             </div>
+
+
             <!-- top navigation -->
             <!-- /top navigation -->
             <!-- page content -->
@@ -181,6 +177,6 @@
 
     <script src="~/Scripts/js/custom.js"></script>
 
-  </body>
+</body>
 
 </html>
