@@ -13,12 +13,14 @@
         <AssociationConnector Association="Database1Model.FK_HeadAccount_Main" ManuallyRouted="false" />
         <AssociationConnector Association="Database1Model.FK_SubHeadAccount_Head" ManuallyRouted="false" />
         <AssociationConnector Association="Database1Model.FK_SubHeadAccount_Main" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="Database1Model.TransactionAccount" Width="1.5" PointX="10.5" PointY="0.75" />
+        <EntityTypeShape EntityType="Database1Model.Transaction" Width="1.5" PointX="9.75" PointY="2.5" />
+        <EntityTypeShape EntityType="Database1Model.TransactionAccount" Width="1.5" PointX="7.5" PointY="0.75" />
+        <AssociationConnector Association="Database1Model.FK_Transaction_Admin" />
         <AssociationConnector Association="Database1Model.FK_Table_ToTable" />
         <AssociationConnector Association="Database1Model.FK_Table_main" />
         <AssociationConnector Association="Database1Model.FK_Table_ToTable_1" />
-        <EntityTypeShape EntityType="Database1Model.Transaction" Width="1.5" PointX="12.75" PointY="1" />
         <AssociationConnector Association="Database1Model.FK_Transaction_ToTable" />
+        <AssociationConnector Association="Database1Model.FK_Transaction_Users" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -3,6 +3,7 @@
 @{
     
     ViewBag.Title = "Reports";
+    var sesion = Session["name"].ToString();
 }
 
 
@@ -142,16 +143,20 @@
                                     <table id="example" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
                                             <tr class="headings">
+                                                @if (sesion == "Admin")
+                                                {
+                                                    <th>User Name</th> 
+                                                }
                                               
                                                 <th>Date </th>
                                                 <th>Type </th>
                                                 <th>Code </th>
                                                 <th>Description </th>
-                                                <th>From  </th>
-                                                <th>To </th>
-                                                <th>Cr </th>
+                                                
                                                 <th>Dr </th>
+                                                <th>Cr </th>
                                                 <th>Balance </th>
+                                                <th>Action</th>
 
                                             </tr>
                                         </thead>
@@ -163,7 +168,17 @@
                                                 foreach (var t in v.Transactions)
                                                 { 
                                                 <tr class="even pointer">
-                                                   
+                                                   @if(sesion=="Admin")
+                                                   {
+                                                       if(t.User!=null)
+                                                       {
+                                                       <td>@t.User.name</td>
+                                                       }
+                                                       else if(@t.Admin!=null)
+                                                       {
+                                                                <td>@t.Admin.username</td>
+                                                       }
+                                                   }
                                                     <td>@t.created_at.ToShortDateString()</td>
                                                    
                                                       
@@ -171,18 +186,18 @@
                                                             
                                                             <td>@t.voucher_type</td> 
                                                             <td>@t.voucher_code</td>
-                                                            <td>@t.description</td>
-                                                            <td>@t.from_account</td>
-                                                            <td>@t.to_account</td>
-                                                            <td>@t.cr</td>
+                                              <td>@t.description <strong> From :</strong>  @t.from_account <strong>To :</strong>   @t.to_account </td>
+                                                          
+                                          
                                                             <td>@t.dr</td>
+                                                            <td>@t.cr</td>
                                                     @{
-                                                    var tt = Convert.ToInt32(t.balance);
+                                                    var tt = Convert.ToInt64(t.balance);
                                                     var balance = String.Format("{0:#,##0.00}",tt);
                                                     }
-                                                            <td>@balance</td>
+                                                            <td> @balance</td>
                                                             
-                                                        
+                                                            <td><a href="@Url.Action("Edit","Transactions" , new {id= @t.Id} )">Edit</a></td>
                                                     
 
                                                     

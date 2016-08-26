@@ -168,7 +168,7 @@
 
                                                                                                         <div class="clearfix"></div>  
 
-                                                                                                        <a href="~/Account_CRUD/createPostSubHead/@head.head_id/" class="btn btn-success modalLink3" data-id="@head.head_id" data-toggle="modal" data-target=".bs-example-modal-lg3">Transaction Account</a>
+                                                                                                        <a href="~/Account_CRUD/CreatePostTrans/@sub.sub_head_id/" class="btn btn-success modalLink3" data-id="@sub.sub_head_id" data-toggle="modal" data-target=".bs-example-modal-lg3">Transaction Account</a>
                                                                                                     </div>
                                                                                                 </li>
                                                                                             </div>
@@ -479,7 +479,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <form action="@Url.Action("CreatePostTrans", "Account_CRUD", new { @class = "hiddenid3" })" method="post" class="form-horizontal form-label-left">
+                    <form action="@Url.Action("CreatePostTrans", "Account_CRUD", new { @class = "hiddenid4" })" method="post" class="form-horizontal form-label-left">
 
                         <div class="form-group">
 
@@ -562,7 +562,7 @@
                             </div>
                         </div>
 
-                        @Html.Hidden("id", "", new { @class = "hiddenid3" })
+                        @Html.Hidden("id", "", new { @class = "hiddenid4" })
                     </form>
 
                 </div>
@@ -853,7 +853,7 @@
         $(".modalLink3").click(function () {
             var passedID = $(this).data('id');
             $('#id').val(passedID);
-            $(".modal-body .hiddenid3").val(passedID);
+            $(".modal-body .hiddenid4").val(passedID);
         });
 
 
