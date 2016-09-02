@@ -143,11 +143,12 @@
                                     <table id="example" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
                                             <tr class="headings">
+                                                <th>ID</th>
                                                 @if (sesion == "Admin")
                                                 {
                                                     <th>User Name</th> 
                                                 }
-                                              
+                                               
                                                 <th>Date </th>
                                                 <th>Type </th>
                                                 <th>Code </th>
@@ -168,6 +169,7 @@
                                                 foreach (var t in v.Transactions)
                                                 { 
                                                 <tr class="even pointer">
+                                                    <td>@t.Id</td>
                                                    @if(sesion=="Admin")
                                                    {
                                                        if(t.User!=null)
