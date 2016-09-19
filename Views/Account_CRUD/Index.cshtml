@@ -263,6 +263,8 @@
                         @if(accCreate=="Y")
                         { 
                         <a href="#" class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg">Create Main Account</a>
+    <a href="~/SaleVoucher/unitRate/" class="btn btn-success" data-toggle="" data-target="">Add Rate</a>
+    <a href="~/SaleVoucher/addGood/" class="btn btn-success" data-toggle="modal" data-target=".bs-example-modal-lg78">Add Goods</a>
                         }
                     </div>
                             
@@ -792,6 +794,94 @@
 
 
     <!--END EDIT HEAD ACCOUNT POPUP-->
+
+
+
+
+
+    <div class="modal fade bs-example-modal-lg78" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">Add goods Account</h4>
+                </div>
+
+
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="x_panel">
+
+                        <div class="x_content">
+                            <br>
+                            <form action="~/SaleVoucher/addGood/" class="form-horizontal form-label-left" method="post">
+                                <div class="form-group">
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                        Name <span class="required">*</span>
+                                    </label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                        <input type="text" name="name"  class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                </div>
+
+                                
+
+
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                                        <button type="submit" class="btn btn-success">Submit</button>
+                                    </div>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

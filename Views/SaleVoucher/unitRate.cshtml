@@ -1,13 +1,9 @@
 ﻿@model List<ranglerz_project.Models.TransactionAccount>
+
 @{
-    ViewBag.Title = "Bank Payment Voucher";
+    ViewBag.Title = "unitRate";
 }
 
-
-
-
-<!DOCTYPE html>
-<html lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -16,7 +12,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    
+    <title>Create New User Account</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -71,7 +67,7 @@
 
                     <div class="page-title">
                         <div class="title_left">
-                            <h3>Journal Voucher</h3>
+                            <h3>Add New Rate</h3>
                         </div>
 
                     </div>
@@ -81,35 +77,20 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>New Journal Voucher <small></small></h2>
+                                <h2>New Rate <small></small></h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="demo-form2" action="@Url.Action("bankPaymentPost", "Transactions")" method="post" data-parsley-validate class="form-horizontal form-label-left">
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                                            From <span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select name="from" required class="form-control chzn-select col-md-7 col-xs-12">
-                                                <option value="">Please select any </option>
-                                                @foreach (var tr in Model)
-                                                {
-                                                    <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
-                                                }
+                                <form id="demo-form2" action="@Url.Action("addUnitRate", "SaleVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
 
 
-                                            </select>
-                                        </div>
-                                    </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                            To <span class="required">*</span>
+                                            Account  <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select name="to" required class="form-control chzn-select col-md-7 col-xs-12">
+                                            <select name="account" required class="form-control chzn-select col-md-7 col-xs-12">
                                                 <option value="">Please select any </option>
                                                 @foreach (var tr in Model)
                                                 {
@@ -119,38 +100,61 @@
                                             </select>
                                         </div>
                                     </div>
+
+
+
+
                                     <div class="form-group">
-                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Amount </label>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Good type <span class="required">*</span>
+                                        </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="amount" required>
+                                            <select name="good" required class="form-control chzn-select col-md-7 col-xs-12">
+                                                <option value="">Please select any </option>
+                                                @foreach (var tr in ViewBag.myList)
+                                                {
+                                                    <option value="@tr.good_Name">@tr.good_Name </option>
+                                                }
+
+                                            </select>
                                         </div>
                                     </div>
 
-                                    <div class="from-group">
-                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Cheque type </label>
-                                        <label style="margin-right:20px;"> <input type="radio" value="cash" name="chequeType" checked />Cash </label>
-                                        <label>  <input type="radio" value="cross" name="chequeType" /> Cross </label>
-                                    </div>
 
-                                    <div class="form-group">
-                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Cheque # </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="chequeNo" required>
-                                        </div>
-                                    </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                 
                                     <div class="form-group">
-                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Date </label>
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Rate </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="date" name="date" required>
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="rate" required>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Description </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="description" required>
-                                        </div>
-                                    </div>
+                                    
+                                 
+                              
+                                   
                             </div>
                             <div class="form-group">
 
@@ -160,7 +164,7 @@
                             <div class="form-group">
                                 <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 
-                                    <input type="submit" value="Add Voucher" class="btn btn-success" />
+                                    <input type="submit" value="Add Rate" class="btn btn-success" />
                                 </div>
                             </div>
 
@@ -196,4 +200,5 @@
 </body>
 
 </html>
+
 

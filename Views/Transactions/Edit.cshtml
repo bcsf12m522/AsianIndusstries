@@ -72,7 +72,7 @@
 
                     <div class="page-title">
                         <div class="title_left">
-                            <h3>Journal Voucher</h3>
+                            <h3>Update Voucher</h3>
                         </div>
 
                     </div>
@@ -81,10 +81,7 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
-                            <div class="x_title">
-                                <h2>New Journal Voucher <small></small></h2>
-                                <div class="clearfix"></div>
-                            </div>
+                            
                             <div class="x_content">
                                 <br />
                                 <form id="demo-form2" action="@Url.Action("Edit", "Transactions", new {id= Model.Id })" method="post" data-parsley-validate class="form-horizontal form-label-left">
@@ -141,6 +138,39 @@
                                             <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" value="@credit" name="amount" required>
                                         </div>
                                     </div>
+                                    @if (@Model.cheque_no != null)
+                                    {
+
+                                        <div class="from-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Cheque type </label>
+                                            <label style="margin-right:20px;"> <input type="radio" value="cash" name="chequeType" checked />Cash </label>
+                                            <label>  <input type="radio" value="cross" name="chequeType" /> Cross </label>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Cheque # </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" value="@Model.cheque_no" name="chequeNo" required>
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    }
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Date </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">

@@ -2,6 +2,7 @@
     var view = Session["view"].ToString();
     var create = Session["create"].ToString();
     var accView = Session["accView"].ToString();
+    var name = Session["name"].ToString();
 }
 
 
@@ -10,7 +11,14 @@
     <div class="left_col scroll-view">
 
         <div class="navbar nav_title" style="border: 0;">
-            <a href="index.html" class="site_title"><i class="fa fa-paw"></i> <span>Asian Industry</span></a>
+            @if(name=="Admin")
+            {
+            <a href="~/Admin/index/" class="site_title"><i class="fa fa-paw"></i> <span>Asian Industry</span></a>
+            }
+            else
+            {
+                <a href="#" class="site_title"><i class="fa fa-paw"></i> <span>Asian Industry</span></a>
+            }
         </div>
         <div class="clearfix"></div>
 
@@ -81,7 +89,21 @@
                                <li>
                                 <a href="~/Transactions/cashReceive/">Cash Receive</a>
                                </li>
-                            
+                               <li>
+                                <a href="~/SaleVoucher/">Sale Voucher</a>
+                               </li>
+                               <li>
+                                <a href="~/SaleVoucher/salesReport/">Sales Report</a>
+                               </li>
+                               <li>
+                                <a href="~/SaleVoucher/purchaseVoucher/">Purchase Voucher</a>
+                               </li>   
+                            <li>
+                                <a href="~/SaleVoucher/unitPriceSV/">UnitPriceSV</a>
+                            </li>
+                            <li>
+                                <a href="~/SaleVoucher/unitPricePV/">UnitPricePV</a>
+                            </li>
                         </ul>
                     </li>
 

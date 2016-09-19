@@ -1,7 +1,14 @@
 ﻿@model List<ranglerz_project.Models.TransactionAccount>
+
 @{
-    ViewBag.Title = "Bank Payment Voucher";
+    ViewBag.Title = "Purchase Voucher";
 }
+
+
+
+
+
+
 
 
 
@@ -16,7 +23,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    
+    <title>Create New User Account</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -71,7 +78,7 @@
 
                     <div class="page-title">
                         <div class="title_left">
-                            <h3>Journal Voucher</h3>
+                            <h3>Purchase Voucher</h3>
                         </div>
 
                     </div>
@@ -81,16 +88,17 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>New Journal Voucher <small></small></h2>
+                                <h2>New Purchase Voucher <small></small></h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="demo-form2" action="@Url.Action("bankPaymentPost", "Transactions")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                                <form id="demo-form2" action="@Url.Action("AddPurchaseVoucher", "SaleVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                                            From <span class="required">*</span>
+                                            From Client <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select name="from" required class="form-control chzn-select col-md-7 col-xs-12">
@@ -104,9 +112,27 @@
                                             </select>
                                         </div>
                                     </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                            To <span class="required">*</span>
+                                            To Client <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select name="to" required class="form-control chzn-select col-md-7 col-xs-12">
@@ -120,25 +146,56 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Amount </label>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
+                                            Good type <span class="required">*</span>
+                                        </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="amount" required>
+                                            <select name="good" required class="form-control chzn-select col-md-7 col-xs-12">
+                                                <option value="">Please select any </option>
+                                                @foreach (var tr in ViewBag.myList)
+                                                {
+                                                    <option value="@tr.good_Name">@tr.good_Name </option>
+                                                }
+
+                                            </select>
                                         </div>
                                     </div>
-
-                                    <div class="from-group">
-                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Cheque type </label>
-                                        <label style="margin-right:20px;"> <input type="radio" value="cash" name="chequeType" checked />Cash </label>
-                                        <label>  <input type="radio" value="cross" name="chequeType" /> Cross </label>
-                                    </div>
-
                                     <div class="form-group">
-                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Cheque # </label>
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Truck </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="chequeNo" required>
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="truck" required>
                                         </div>
                                     </div>
-
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">GRN: </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="grn" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Weight Load </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="txtFirstValue" onkeyup="javascript:Add();" class="form-control col-md-7 col-xs-12" type="text" name="load" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Weight Empty </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="txtSecondValue" onkeyup="javascript:Add();" class="form-control col-md-7 col-xs-12" type="text" name="empty" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Deduction </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="deduction" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Net Weight </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="txtTotal" class="form-control col-md-7 col-xs-12" type="text" name="net" required>
+                                        </div>
+                                    </div>
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Date </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
@@ -193,7 +250,51 @@
 
     <script src="~/Scripts/js/custom.js"></script>
 
+    <script language="javascript" type="text/javascript">
+
+    //
+    // This function will allow users to insert only numbers in the textboxes.
+    //
+
+    function onlyNumbers(evt) {
+        var e = event || evt; // for trans-browser compatibility
+        var charCode = e.which || e.keyCode;
+
+        if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+        return true;
+    }
+
+    //
+    // This function is to calculate all the values of textboxes.
+    //
+
+    function Add() {
+        var a, b, c, d;
+        a = parseInt(document.getElementById("txtFirstValue").value);
+
+        //
+        // If textbox value is null i.e empty, then the below mentioned if condition will
+        // come into picture and make the value to '0' to avoid errors.
+        //
+
+        if (isNaN(a) == true) {
+            a = 0;
+        }
+        var b = parseInt(document.getElementById("txtSecondValue").value);
+        if (isNaN(b) == true) {
+            b = 0;
+        }
+
+
+        document.getElementById("txtTotal").value = a - b
+    }
+    </script>
+
+
 </body>
 
 </html>
+
+
 

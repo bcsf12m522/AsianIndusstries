@@ -17,7 +17,10 @@
         <AssociationConnector Association="Database1Model.FK_Table_ToTable" />
         <AssociationConnector Association="Database1Model.FK_Table_main" />
         <AssociationConnector Association="Database1Model.FK_Table_ToTable_1" />
-        <EntityTypeShape EntityType="Database1Model.Transaction" Width="1.5" PointX="9.75" PointY="2.375" />
+        <EntityTypeShape EntityType="Database1Model.UnitRate" Width="1.5" PointX="9.75" PointY="9.875" />
+        <AssociationConnector Association="Database1Model.FK_Table_TransactionAccount" />
+        <EntityTypeShape EntityType="Database1Model.Good" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="Database1Model.Transaction" Width="1.5" PointX="9.75" PointY="0.75" />
         <AssociationConnector Association="Database1Model.FK_Transaction_Admin" />
         <AssociationConnector Association="Database1Model.FK_Transaction_ToTable" />
         <AssociationConnector Association="Database1Model.FK_Transaction_Users" />
