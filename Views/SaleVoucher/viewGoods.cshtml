@@ -118,7 +118,9 @@
                                                
 
                                                 <th>Name </th>
+                                                <th>Status</th>
                                                 <th>Action </th>
+                                                <th>Action</th>
                                             
                                             </tr>
                                         </thead>
@@ -129,9 +131,18 @@
                                                 {
                                                     <tr class="even pointer">
                                                         <td>@t.good_Name</td>
+                                                        @if(@t.is_active=="Y")
+                                                        {
+                                                             
+                                                        <td>Availabe</td>
                 
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>Removed</td>
+                                                        }
                                                         <td><a href="@Url.Action("editGood","SaleVoucher" , new {id= @t.Id} )">Edit</a></td>
-
+                                                        <td><a href="@Url.Action("deleteGood","SaleVoucher" , new {id= @t.Id} )">Delete</a></td>
 
                                                     </tr>
                                                 }
