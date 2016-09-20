@@ -24,6 +24,7 @@
         <AssociationConnector Association="Database1Model.FK_Transaction_Admin" />
         <AssociationConnector Association="Database1Model.FK_Transaction_ToTable" />
         <AssociationConnector Association="Database1Model.FK_Transaction_Users" />
+        <EntityTypeShape EntityType="Database1Model.Employee" Width="1.5" PointX="5.375" PointY="9.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
