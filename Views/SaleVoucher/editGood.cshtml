@@ -97,6 +97,17 @@
                                                 <input class="form-control col-md-7 col-xs-12" type="text" name="name" value="@Model.good_Name" >
                                                 
                                             </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <select name="goodType" required class="form-control chzn-select col-md-7 col-xs-12">
+                                                    <option value="">Please select any </option>
+                                                    @foreach (var tr in ViewBag.typeList)
+                                                    {
+                                                        <option value="@tr.type">@tr.type </option>
+                                                    }
+
+                                                </select>
+                                            </div>
+
                                             <input type="submit" value="Update" class="btn btn-success" />  
                                         </div>
                                      

@@ -45,102 +45,151 @@
                     <li>
                         <a><i class="fa fa-bar-chart-o"></i> Users <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none">
-                            @if(create=="Y")
-                            { 
-                            <li>
-                                <a href="~/USER_CRUD/Create/">Add User</a>
-                            </li>
+                            @if (create == "Y")
+                            {
+                                <li>
+                                    <a href="~/USER_CRUD/Create/">Add User</a>
+                                </li>
                             }
-                         @if(view=="Y")
-                         { 
-                            <li>
-                                <a href="~/User_CRUD/viewUsers/">View Users</a>
-                            </li>
-                         } 
+                            @if (view == "Y")
+                            {
+                                <li>
+                                    <a href="~/User_CRUD/viewUsers/">View Users</a>
+                                </li>
+                            }
                         </ul>
                     </li>
-                    @if(accView=="Y")
-                    { 
-                    <li>
-                        <a href="~/Account_CRUD/Index/"><i class="fa fa-bar-chart-o"></i>Accounts</a>
+                    @if (accView == "Y")
+                    {
+                        <li>
+                            <a href="~/Account_CRUD/Index/"><i class="fa fa-bar-chart-o"></i>Accounts</a>
 
-                    </li>
+                        </li>
                     }
-                    
+
                     <li>
                         <a><i class="fa fa-bar-chart-o"></i> Vouchers <span class="fa fa-chevron-down"></span></a>
                         <ul class="nav child_menu" style="display: none">
-                            
-                            
-                                <li>
-                                    <a href="~/Transactions/journal/">Journal Voucher</a>
-                                </li>
-                            
-                                <li>
-                                   <a href="~/Transactions/bank/">Bank Recieved</a>
-                                </li>
 
-                                <li>
+
+                            <li>
+                                <a href="~/Transactions/journal/">Journal Voucher</a>
+                            </li>
+
+                            <li>
+                                <a href="~/Transactions/bank/">Bank Recieved</a>
+                            </li>
+
+                            <li>
                                 <a href="~/Transactions/bankPayment/">Bank Payment</a>
-                                </li>
-                               <li>
+                            </li>
+                            <li>
                                 <a href="~/Transactions/cashPayment/">Cash Payment</a>
-                               </li>
-                               <li>
+                            </li>
+                            <li>
                                 <a href="~/Transactions/cashReceive/">Cash Receive</a>
-                               </li>
-                               <li>
+                            </li>
+                            <li>
                                 <a href="~/SaleVoucher/">Sale Voucher</a>
-                               </li>
-                               
-                               <li>
+                            </li>
+
+                            <li>
                                 <a href="~/SaleVoucher/purchaseVoucher/">Purchase Voucher</a>
-                               </li>   
+                            </li>
                             <li>
                                 <a href="~/SaleVoucher/unitPriceSV/">UnitPriceSV</a>
                             </li>
                             <li>
                                 <a href="~/SaleVoucher/unitPricePV/">UnitPricePV</a>
                             </li>
+                            <li>
+                                <a href="~/ExpenseVoucher/index/">Expense Voucher</a>
+                            </li>
+
                         </ul>
                     </li>
 
 
 
 
-                 
+
+
 
 
 
 
 
                     <li>
-                        <a href="~/Transactions/history/"><i class="fa fa-bar-chart-o"></i>Reports</a>
+
+                        <a><i class="fa fa-bar-chart-o"></i> Reports <span class="fa fa-chevron-down"></span></a>
+                        <ul class="nav child_menu" style="display: none">
+
+
+
+
+                            <li>
+                                <a href="~/Transactions/history/"><i class="fa fa-bar-chart-o"></i> All Reports</a>
+
+                            </li>
+
+                            <li>
+
+                                <a href="~/SaleVoucher/salesReport/"><i class="fa fa-bar-chart-o"></i>Sales Report</a>
+
+                            </li>
+                            <li>
+                                <a href="~/ExpenseVoucher/ExpenseReports/"><i class="fa fa-bar-chart-o"></i>Expense Reports</a>
+                            </li>
+                        </ul>
 
                     </li>
-
-                    <li>
-                        <a href="~/SaleVoucher/salesReport/"><i class="fa fa-bar-chart-o"></i>Sales Report</a>
-                    </li>
-
 
                     <li>
                         <a href="~/SaleVoucher/viewGoods/"><i class="fa fa-bar-chart-o"></i>Goods</a>
                     </li>
 
 
-                    <li>
-                        <a href="~/Employee/Index/"><i class="fa fa-bar-chart-o"></i>Employees</a>
-                    </li>
 
 
-                    <li style="">
-                        <a href="~/Home/logout/"><i class="fa fa-bar-chart-o"></i> Log out</a>
-                    </li>
+                     <li>
 
-                </ul>
+                        <a><i class="fa fa-bar-chart-o"></i> Employees <span class="fa fa-chevron-down"></span></a>
 
-            </div>
+                         <ul class="nav child_menu" style="display: none">
+
+
+                             <li>
+                                 <a href="~/Employee/Index/"><i class="fa fa-bar-chart-o"></i> ALL Employees</a>
+                             </li>
+
+                             <li>
+                                 <a href="~/Employee/AttendenceSearch/1"><i class="fa fa-bar-chart-o"></i>Employees Attendence</a>
+                             </li>
+                             <li>
+                                 <a href="~/Employee/AttendenceSearch/2"><i class="fa fa-bar-chart-o"></i>View Attendence</a>
+                             </li>
+
+
+
+
+                             <li>
+                                 <a href="~/Employee/AttendenceReports/"><i class="fa fa-bar-chart-o"></i>View Attendence Reports</a>
+                             </li>
+                             
+                         </ul>
+                   </li>
+
+                   
+
+
+                  
+
+          
+                <li style="">
+                    <a href="~/Home/logout/"><i class="fa fa-bar-chart-o"></i> Log out</a>
+                </li>
+
+</div>
 
 
             

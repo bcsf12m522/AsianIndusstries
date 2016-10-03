@@ -1,9 +1,15 @@
-﻿@model List<ranglerz_project.Models.Good>
-
+﻿@model List<ranglerz_project.Models.TransactionAccount>
 @{
-    ViewBag.Title = "unitRate";
+    ViewBag.Title = "ExpenseReports";
+    var sesion = Session["name"].ToString();
 }
 
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -67,7 +73,7 @@
 
                     <div class="page-title">
                         <div class="title_left">
-                            <h3>Add New Rate</h3>
+                            <h3>Expense Reports</h3>
                         </div>
 
                     </div>
@@ -77,96 +83,41 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>New Rate <small></small></h2>
+                                <h2>Reports <small></small></h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="demo-form2" action="@Url.Action("addUnitRate", "SaleVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
-
+                                <form id="demo-form2" action="@Url.Action("ExpenseReportsPost", "ExpenseVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
 
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                            Account  <span class="required">*</span>
-                                        </label>
+
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select name="account" required class="form-control chzn-select col-md-7 col-xs-12">
+                                            <select name="search" required class="form-control chzn-select col-md-7 col-xs-12">
                                                 <option value="">Please select any </option>
                                                 @foreach (var tr in Model)
                                                 {
-                                                    <option value="@tr.good_Name">@tr.TransactionAccount.name -> @tr.good_Name </option>
+                                                    
+                                                     
+                                                    <option value="@tr.name">@tr.MainAccount.name -> @tr.HeadAccount.name -> @tr.SubHeadAccount.name -> @tr.name </option>
+                                                    
                                                 }
+
 
                                             </select>
                                         </div>
-                                    </div>
-
-
-
-
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                            Good type <span class="required">*</span>
-                                        </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select name="good" required class="form-control chzn-select col-md-7 col-xs-12">
-                                                <option value="">Please select any </option>
-                                                @foreach (var tr in ViewBag.myList)
-                                                {
-                                                    <option value="@tr.type">@tr.type </option>
-                                                }
 
-                                            </select>
+                                            <input type="submit" value="Search" class="btn btn-success" />
                                         </div>
                                     </div>
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                 
-                                    <div class="form-group">
-                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Rate </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="rate" required>
-                                        </div>
-                                    </div>
-                                    
-                                 
-                              
-                                   
                             </div>
-                            <div class="form-group">
 
-
-                            </div>
                             <div class="ln_solid"></div>
-                            <div class="form-group">
-                                <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-
-                                    <input type="submit" value="Add Rate" class="btn btn-success" />
-                                </div>
-                            </div>
 
                             </form>
                         </div>
@@ -200,5 +151,4 @@
 </body>
 
 </html>
-
 

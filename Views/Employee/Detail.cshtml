@@ -1,8 +1,8 @@
-﻿@model List<ranglerz_project.Models.Employee>
+﻿@model ranglerz_project.Models.Employee
 
 
 @{
-    ViewBag.Title = "ViewUsers";
+    ViewBag.Title = "Employee Detail";
 }
 
 
@@ -83,12 +83,17 @@
                                             <tr class="headings">
 
                                                 <th>Name </th>
-                                                <th>City </th>
-                                                <th>Phone</th>
-                                                <th>Picture </th>
-                                                <th>Status </th>
-                                                <th>Location</th>
-                                                <th>CNIC</th>
+                                             
+                                             
+                                          
+                                             
+                                           
+                                              
+                                                <th>Email</th>
+                                                <th>Department</th>
+                                                <th>Designation</th>
+                                                <th>Joining Date</th>
+                                                <th>Employee Status</th>
                                                 <th>Action</th>
 
                                             </tr>
@@ -96,44 +101,33 @@
 
                                         <tbody>
 
-                                            @foreach (var v in Model)
-                                            {
+                                          
+                                            
                                                 <tr class="even pointer">
 
 
-                                                    <td class=" ">@v.Name</td>
-                                                    <td class=" ">@v.City </td>
-                                                    <td>@v.phone</td>
-                                                    <td class=" ">
-                                                        @{
-                                                var Base64 = Convert.ToBase64String(v.image_);
-                                                var imgsrc = string.Format("data:img/gif;base64,{0}", Base64);
-                                                        }
-                                                        <img src="@imgsrc" style="max-height:100px; max-width:100px;" />
-                                                    </td>
-                                                    @if (v.is_active == "Y")
-                                                    {
-                                                        <td>Active</td>
-                                                    }
-                                                    else
-                                                    {
-                                                        <td>Deactive</td>
-                                                    }
-                                                    <td>@v.location</td>
-                                                    <td>@v.cnic</td>
-
+                                                    <td class=" ">@Model.Name</td>
+                                           
+                                                  
+                                             
+                                             
+                                                
+                                                    <td>@Model.email</td>
+                                                    <td>@Model.department</td>
+                                                    <td>@Model.designation</td>
+                                                    <td>@Model.joining_date</td>
+                                                    <td>@Model.status</td>
 
 
 
                                                     <td>
-                                                        <a href="~/Employee/Edit/@v.Id/">Update</a> &nbsp;&nbsp;&nbsp;
-                                                        <a href="~/Employee/Delete/@v.Id/" onclick="return confirm('Are you sure you want to Delete?')">Delete</a>&nbsp;&nbsp;&nbsp;
-                                                        <a href="~/Employee/Detail/@v.Id/">View Detail</a>
+                                                        <a href="~/Employee/Edit/@Model.Id/">Update</a> 
+                                                        <a href="~/Employee/Delete/@Model.Id/" onclick="return confirm('Are you sure you want to Delete?')">Delete</a>
                                                     </td>
 
 
                                                 </tr>
-                                            }
+                                            
 
 
                                         </tbody>

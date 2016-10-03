@@ -17,14 +17,25 @@
         <AssociationConnector Association="Database1Model.FK_Table_ToTable" />
         <AssociationConnector Association="Database1Model.FK_Table_main" />
         <AssociationConnector Association="Database1Model.FK_Table_ToTable_1" />
-        <EntityTypeShape EntityType="Database1Model.UnitRate" Width="1.5" PointX="9.75" PointY="9.875" />
-        <AssociationConnector Association="Database1Model.FK_Table_TransactionAccount" />
-        <EntityTypeShape EntityType="Database1Model.Good" Width="1.5" PointX="5.375" PointY="6.75" />
         <EntityTypeShape EntityType="Database1Model.Transaction" Width="1.5" PointX="9.75" PointY="0.75" />
         <AssociationConnector Association="Database1Model.FK_Transaction_Admin" />
         <AssociationConnector Association="Database1Model.FK_Transaction_ToTable" />
         <AssociationConnector Association="Database1Model.FK_Transaction_Users" />
+        <EntityTypeShape EntityType="Database1Model.Good_Types" Width="1.5" PointX="5.375" PointY="6.75" />
+        <EntityTypeShape EntityType="Database1Model.Good" Width="1.5" PointX="9.75" PointY="10.75" />
+        <EntityTypeShape EntityType="Database1Model.UnitRate" Width="1.5" PointX="12" PointY="10.875" />
+        <AssociationConnector Association="Database1Model.FK_Goods_transaction" />
+        <AssociationConnector Association="Database1Model.FK_UnitRate_GOODs" />
         <EntityTypeShape EntityType="Database1Model.Employee" Width="1.5" PointX="5.375" PointY="9.75" />
+        <EntityTypeShape EntityType="Database1Model.Attendence" Width="1.5" PointX="7.625" PointY="14.625" />
+        <AssociationConnector Association="Database1Model.FK_Attendence_Employee" />
+        <EntityTypeShape EntityType="Database1Model.ExpenseTransaction" Width="1.5" PointX="12.75" PointY="1" />
+        <AssociationConnector Association="Database1Model.FK_ExpenseTransactions_ToTable_5" />
+        <AssociationConnector Association="Database1Model.FK_ExpenseTransactions_HeadAccount" />
+        <AssociationConnector Association="Database1Model.FK_ExpenseTransactions_MainAccount" />
+        <AssociationConnector Association="Database1Model.FK_ExpenseTransactions_ToTable_2" />
+        <AssociationConnector Association="Database1Model.FK_ExpenseTransactions_ToTable_3" />
+        <AssociationConnector Association="Database1Model.FK_ExpenseTransactions_ToTable_4" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

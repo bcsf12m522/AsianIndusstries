@@ -143,9 +143,37 @@
 
                                         <div class="from-group">
                                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Cheque type </label>
-                                            <label style="margin-right:20px;"> <input type="radio" value="cash" name="chequeType" checked />Cash </label>
+                                            @if (Model.cash != null)
+                                            {
+                                                <label style="margin-right:20px;"> <input type="radio" value="cash" name="chequeType" checked />Cash </label>
+                                            }
+                                            else
+                                            { 
+                                            <label style="margin-right:20px;"> <input type="radio" value="cash" name="chequeType"  />Cash </label>
+                                            }
+                                            @if (Model.cross != null)
+                                            {
+                                                <label>  <input type="radio" value="cross" checked name="chequeType" /> Cross </label>
+                                            }
+                                            else
+                                            { 
                                             <label>  <input type="radio" value="cross" name="chequeType" /> Cross </label>
+                                            }
+                                            @if (Model.extra != null)
+                                            {
+                                                <label>  <input type="radio" value="none" checked name="chequeType" /> None </label>
+                                            }
+                                            else
+                                            { 
+                                            <label>  <input type="radio" value="none" name="chequeType" /> None </label>
+                                            }
                                         </div>
+    <div class="form-group">
+        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tax % </label>
+        <div class="col-md-6 col-sm-6 col-xs-12">
+            <input id="middle-name" class="form-control col-md-7 col-xs-12" value="@Model.tax" type="text" name="tax" required>
+        </div>
+    </div>
 
                                         <div class="form-group">
                                             <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Cheque # </label>

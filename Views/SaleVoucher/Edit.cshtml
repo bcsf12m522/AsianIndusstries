@@ -132,20 +132,11 @@
                                 <form id="demo-form2" action="@Url.Action("Edit", "SaleVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
 
 
+                                    
                                     <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                                            From Client <span class="required">*</span>
-                                        </label>
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Good </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select name="from" required class="form-control chzn-select col-md-7 col-xs-12">
-                                                <option value="">Please select any </option>
-                                                @foreach (var tr in ViewBag.myList)
-                                                {
-                                                    <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
-                                                }
-
-
-                                            </select>
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" value="@Model.good_" name="from" readonly required>
                                         </div>
                                     </div>
 
@@ -157,14 +148,18 @@
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                            To Client <span class="required">*</span>
+                                            To  <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select name="to" required class="form-control chzn-select col-md-7 col-xs-12">
-                                                <option value="">Please select any </option>
-                                                @foreach (var tr in ViewBag.myList)
+                                                <option value="@Model.to_account">@Model.to_account </option>
+                                             
+                                                @foreach (var tr in ViewBag.Accounts)
                                                 {
+                                                    if(tr.name != Model.to_account)
+                                                    { 
                                                     <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
+                                                    }
                                                 }
 
                                             </select>
@@ -182,21 +177,7 @@
 
 
 
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                            Good type <span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select name="good" required class="form-control chzn-select col-md-7 col-xs-12">
-                                                <option value="">Please select any </option>
-                                                @foreach (var tr in ViewBag.Goods)
-                                                {
-                                                    <option value="@tr.good_Name">@tr.good_Name </option>
-                                                }
-
-                                            </select>
-                                        </div>
-                                    </div>
+                                    
                                   @if (Model.unit_price !=null)
                                   {
                                     <div class="form-group">

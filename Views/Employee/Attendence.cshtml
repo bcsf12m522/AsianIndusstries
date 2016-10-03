@@ -1,10 +1,11 @@
-﻿@model List<ranglerz_project.Models.Good>
+﻿@model List<ranglerz_project.Models.Attendence>
 @{
-    ViewBag.Title = "ViewPost";
-   
+    ViewBag.Title = "Attendence";
+    
 }
 
-
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -27,36 +28,8 @@
     <link rel="stylesheet" type="text/css" href="~/Content/css/jquery-jvectormap-2.0.1.css" />
     <link href="~/Content/css/green.css" rel="stylesheet" />
     <link href="~/Content/css/floatexamples.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="~/Content/css/chosen.css" media="all" />
-
 
     <script src="~/Scripts/js/jquery.min.js"></script>
-
-
-    <script src="~/Scripts/jquery-1.8.3.min.js"></script>
-    <script src="~/Scripts/chosen.jquery.min.js"></script>
-
-
-
-    <script>
-        //* enchanced select
-        chosen_select = {
-            init: function () {
-                $(".chzn-select").chosen();
-            }
-        };
-
-        $(document).ready(function () {
-            // extended select elements
-            chosen_select.init();
-        });
-    </script>
-
-
-
-
-
-
 
 
 </head>
@@ -83,79 +56,98 @@
                     <div class="page-title">
                         <div class="title_left">
                             <h3>
-                                Goods
+                                Attendence
                             </h3>
                         </div>
 
 
                     </div>
                     <div class="clearfix"></div>
-                    <div class="row">
-                        <div class="x_content">
-                            <br />
-                        
-
-
-
-
-                        </div>
-
-                    </div>
 
                     <div class="row">
 
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>View Goods</h2>
+                                    <h2>Date : @ViewBag.Date.ToShortDateString()  </h2>
                                     <div class="clearfix"></div>
                                 </div>
-                                <div class="x_content">
+                                                           
+                                    
+                                   <div class="x_content">
+                            
                                     <table id="example" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
                                             <tr class="headings">
-                                              
-                                               
-
+                                                <th>ID</th>
                                                 <th>Name </th>
-                                                <th>Type</th>
-                                                <th>Transaction Account</th>
-                                                <th>Status</th>
-                                                <th>Action </th>
+                                                <th>Present </th>
+                                                <th>Absent</th>
+                                                <th>Time in </th>
+                                                <th>Time out </th>
                                                 <th>Action</th>
-                                            
+                                                
+
                                             </tr>
                                         </thead>
+                                           @foreach (var v in Model)
+                                          {
+                                        <form action="@Url.Action("AttendencePost", "Employee", new {id = @v.Id })" method="post">
 
-                                        <tbody>
+                                                <tbody>
 
-                                                @foreach (var t in Model)
-                                                {
+
+
                                                     <tr class="even pointer">
-                                                        <td>@t.good_Name</td>
-                                                        <td>@t.good_Type</td>
-                                                        <td>@t.TransactionAccount.name</td>
-                                                        @if(@t.is_active=="Y")
+
+                                                        <td>@v.Id</td>
+                                                        <td class=" ">@v.Employee.Name</td>
+                                                        @if (@v.present == 1)
                                                         {
-                                                             
-                                                        <td>Availabe</td>
-                
+                                                            <td><input type="checkbox" value="present" checked name="present"> </td>
                                                         }
                                                         else
                                                         {
-                                                            <td>Removed</td>
+                                                            <td><input type="checkbox" value="present" name="present"> </td>
                                                         }
-                                                        <td><a href="@Url.Action("editGood","SaleVoucher" , new {id= @t.Id} )">Edit</a></td>
-                                                        <td><a href="@Url.Action("deleteGood","SaleVoucher" , new {id= @t.Id} )">Delete</a></td>
+                                                        @if (@v.absent == 1)
+                                                        {
+                                                            <td><input type="checkbox" checked value="absent" name="present"> </td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td><input type="checkbox" value="absent" name="present"> </td>
+                                                        }
+                                                      
+                                               
+                                                        <td><input type="time" value="@v.time_in_" name="timeIn" required> </td>
+                                                        <td> <input type="time" value="@v.time_out" name="timeOut" required> </td>
+
+
+
+
+
+                                                        <td>
+                                                         
+                                                            <input type="submit" value="Add" />
+                                         
+                                                        </td>
+
 
                                                     </tr>
-                                                }
 
-                                            
-                                        </tbody>
 
+
+
+                                                </tbody>
+                                            <input type="hidden" name="date" value="@v.date" />
+                                        </form>
+                                           }
                                     </table>
+
                                 </div>
+                         
+                          
                             </div>
                         </div>
 
@@ -164,6 +156,9 @@
                         <br />
 
                     </div>
+                    <br />
+                    <br />
+                  
                 </div>
 
             </div>
@@ -180,22 +175,6 @@
             return confirm('are you sure?');
         }
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 
 </html>
-

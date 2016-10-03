@@ -1,8 +1,6 @@
-﻿@model List<ranglerz_project.Models.Employee>
-
-
+﻿@model List<ranglerz_project.ModelsBO.EmployeeAttendenceReports>
 @{
-    ViewBag.Title = "ViewUsers";
+    ViewBag.Title = "AttendenceReports";
 }
 
 
@@ -33,8 +31,36 @@
     <link rel="stylesheet" type="text/css" href="~/Content/css/jquery-jvectormap-2.0.1.css" />
     <link href="~/Content/css/green.css" rel="stylesheet" />
     <link href="~/Content/css/floatexamples.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="~/Content/css/chosen.css" media="all" />
+
 
     <script src="~/Scripts/js/jquery.min.js"></script>
+
+
+    <script src="~/Scripts/jquery-1.8.3.min.js"></script>
+    <script src="~/Scripts/chosen.jquery.min.js"></script>
+
+
+
+    <script>
+        //* enchanced select
+        chosen_select = {
+            init: function () {
+                $(".chzn-select").chosen();
+            }
+        };
+
+        $(document).ready(function () {
+            // extended select elements
+            chosen_select.init();
+        });
+    </script>
+
+
+
+
+
+
 
 
 </head>
@@ -61,35 +87,34 @@
                     <div class="page-title">
                         <div class="title_left">
                             <h3>
-                                All Employees
+                                Reports Attendence
                             </h3>
                         </div>
 
 
                     </div>
                     <div class="clearfix"></div>
+                    <div class="row">
+                        
+
+                    </div>
 
                     <div class="row">
 
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>View Employee list</h2>
+                                    <h2>View Reports</h2>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
                                     <table id="example" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
                                             <tr class="headings">
-
+                                                <th>ID</th>
                                                 <th>Name </th>
-                                                <th>City </th>
-                                                <th>Phone</th>
-                                                <th>Picture </th>
-                                                <th>Status </th>
-                                                <th>Location</th>
-                                                <th>CNIC</th>
-                                                <th>Action</th>
+                                                <th>Total Presents </th>
+                                                <th>Total Absents </th>                                               
 
                                             </tr>
                                         </thead>
@@ -98,51 +123,24 @@
 
                                             @foreach (var v in Model)
                                             {
-                                                <tr class="even pointer">
-
-
-                                                    <td class=" ">@v.Name</td>
-                                                    <td class=" ">@v.City </td>
-                                                    <td>@v.phone</td>
-                                                    <td class=" ">
-                                                        @{
-                                                var Base64 = Convert.ToBase64String(v.image_);
-                                                var imgsrc = string.Format("data:img/gif;base64,{0}", Base64);
-                                                        }
-                                                        <img src="@imgsrc" style="max-height:100px; max-width:100px;" />
-                                                    </td>
-                                                    @if (v.is_active == "Y")
-                                                    {
-                                                        <td>Active</td>
-                                                    }
-                                                    else
-                                                    {
-                                                        <td>Deactive</td>
-                                                    }
-                                                    <td>@v.location</td>
-                                                    <td>@v.cnic</td>
+                                             
+                                                
+                                                    <tr class="even pointer">
+                                                        <td>@v.employee.Id</td>
+                                                        <td>@v.Name</td>
+                                                        <td>@v.presents</td>
+                                                        <td>@v.absents</td>
 
 
 
+                                                    </tr>
+                                                }
 
-                                                    <td>
-                                                        <a href="~/Employee/Edit/@v.Id/">Update</a> &nbsp;&nbsp;&nbsp;
-                                                        <a href="~/Employee/Delete/@v.Id/" onclick="return confirm('Are you sure you want to Delete?')">Delete</a>&nbsp;&nbsp;&nbsp;
-                                                        <a href="~/Employee/Detail/@v.Id/">View Detail</a>
-                                                    </td>
-
-
-                                                </tr>
-                                            }
-
-
+                                            
                                         </tbody>
 
                                     </table>
-
                                 </div>
-
-
                             </div>
                         </div>
 
@@ -151,9 +149,6 @@
                         <br />
 
                     </div>
-                    <br />
-                    <br />
-                    <a class="btn-success  actionBar" href="~/Employee/Create/">Create Employee</a>
                 </div>
 
             </div>
@@ -166,10 +161,25 @@
     <script src="~/Scripts/js/custom.js"></script>
 
     <script type="text/javascript">
-        function confirm_delete() {
-            return confirm('are you sure?');
-        }
+    function confirm_delete() {
+        return confirm('are you sure?');
+    }
     </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 
 </html>

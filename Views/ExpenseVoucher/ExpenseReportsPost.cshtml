@@ -1,10 +1,15 @@
 ﻿@model List<ranglerz_project.Models.TransactionAccount>
 @{
-    ViewBag.Title = "salesReportPost";
+    ViewBag.Title = "ExpenseReportsPost";
     var sesion = Session["name"].ToString();
 }
 
 
+
+
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -83,7 +88,7 @@
                     <div class="page-title">
                         <div class="title_left">
                             <h3>
-                             Sale Reports
+                           Expense Reports
                             </h3>
                         </div>
 
@@ -93,7 +98,7 @@
                     <div class="row">
                         <div class="x_content">
                             <br />
-                            <form id="demo-form2" action="@Url.Action("salesReportPost", "SaleVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                            <form id="demo-form2" action="@Url.Action("ExpenseReportsPost", "ExpenseVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
 
                                 <div class="form-group">
 
@@ -102,7 +107,10 @@
                                             <option value="">Please select any </option>
                                             @foreach (var tr in ViewBag.Mylist)
                                             {
-                                                <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
+                                               
+                                                
+                                                    <option value="@tr.name">@tr.MainAccount.name -> @tr.HeadAccount.name -> @tr.SubHeadAccount.name -> @tr.name </option>
+                                                
                                             }
 
 
@@ -130,7 +138,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>View Sale Reports</h2>
+                                    <h2>View Reports</h2>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
@@ -148,12 +156,9 @@
                                                 <th>Code </th>
                                                 <th>Description </th>
 
-                                                <th>Bags </th>
-                                                <th>Truck </th>
-                                                <th>Builty </th>
-                                                <th>Item</th>
-                                                <th>Client's Weight</th>
-                                                <th>Quantity</th>
+                                                <th>Dr </th>
+                                                <th>Cr </th>
+                                                <th>Balance </th>
                                                 <th>Action</th>
 
                                             </tr>
@@ -163,7 +168,7 @@
 
                                             @foreach (var v in Model)
                                             {
-                                                foreach (var t in v.Transactions)
+                                                foreach (var t in v.ExpenseTransactions)
                                                 {
                                                     <tr class="even pointer">
                                                         <td>@t.Id</td>
@@ -178,7 +183,7 @@
                                                                 <td>@t.Admin.username</td>
                                                             }
                                                         }
-                                                        <td>@t.created_at.ToShortDateString()</td>
+t                                                        <td>@t.created_at</td>
 
 
 
@@ -188,17 +193,15 @@
                                                         <td>@t.description <strong> From :</strong>  @t.from_account <strong>To :</strong>   @t.to_account </td>
 
 
-                                                        <td>@t.bags</td>
-                                                        <td>@t.truck</td>
+                                                        <td>@t.dr</td>
+                                                        <td>@t.cr</td>
                                                         @{
                                                         var tt = Convert.ToInt64(t.balance);
                                                         var balance = String.Format("{0:#,##0.00}", tt);
                                                         }
-                                                        <td> @t.builty_no_</td>
-                                                        <td> @t.good_</td>
-                                                        <td>@t.client_s_weight</td>
-                                                        <td>@t.quantity</td>
-                                                        <td><a href="@Url.Action("Edit","SaleVoucher" , new {id= @t.Id} )">Edit</a></td>
+                                                        <td> @balance</td>
+
+                                                        <td><a href="#">Edit</a></td>
 
 
 

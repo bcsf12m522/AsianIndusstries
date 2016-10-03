@@ -93,19 +93,19 @@
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="demo-form2" action="@Url.Action("addUnitPriceSV", "SaleVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                                <form id="demo-form2" action="@Url.Action("AddSaleVoucher", "SaleVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
 
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                                            From Client <span class="required">*</span>
+                                            Good <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select name="from" required class="form-control chzn-select col-md-7 col-xs-12">
                                                 <option value="">Please select any </option>
-                                                @foreach (var tr in Model)
+                                                @foreach (var tr in ViewBag.myList)
                                                 {
-                                                    <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
+                                                    <option value="@tr.good_Name">@tr.good_Name </option>
                                                 }
 
 
@@ -156,21 +156,7 @@
 
 
 
-                                    <div class="form-group">
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                            Good type <span class="required">*</span>
-                                        </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select name="good" required class="form-control chzn-select col-md-7 col-xs-12">
-                                                <option value="">Please select any </option>
-                                                @foreach (var tr in ViewBag.myList)
-                                                {
-                                                    <option value="@tr.good_Name">@tr.good_Name </option>
-                                                }
-
-                                            </select>
-                                        </div>
-                                    </div>
+                                    
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Truck </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">

@@ -1,14 +1,7 @@
-﻿@model List<ranglerz_project.Models.TransactionAccount>
+﻿@model ranglerz_project.Models.MainAccount
 @{
-    ViewBag.Title = "Bank Payment Voucher";
+    ViewBag.Title = "Index Expense Voucher";
 }
-
-
-
-
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -16,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    
+    <title>Expense Voucher</title>
 
     <!-- Bootstrap core CSS -->
 
@@ -71,7 +64,7 @@
 
                     <div class="page-title">
                         <div class="title_left">
-                            <h3>Journal Voucher</h3>
+                            <h3>Expense Voucher</h3>
                         </div>
 
                     </div>
@@ -81,23 +74,69 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>New Journal Voucher <small></small></h2>
+                                <h2>New Expense Voucher <small></small></h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="demo-form2" action="@Url.Action("bankPaymentPost", "Transactions")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                                <form id="demo-form2" action="@Url.Action("ExpensePost", "ExpenseVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
-                                            From <span class="required">*</span>
+                                            HeadAccount <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select name="from" required class="form-control chzn-select col-md-7 col-xs-12">
+                                            <select name="head"  class="form-control chzn-select col-md-7 col-xs-12">
                                                 <option value="">Please select any </option>
-                                                @foreach (var tr in Model)
+                                                @foreach (var head in Model.HeadAccounts)
                                                 {
-                                                    <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
+                                                    <option value="@head.head_id">@head.MainAccount.name -> @head.name </option>
+                                                    
+                                                  
+                                                }
+
+
+                                            </select>
+                                        </div>
+                                        </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                            SubHeadAccount <span class="required">*</span>
+                                        </label>
+
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select name="subHead"  class="form-control chzn-select col-md-7 col-xs-12">
+                                                <option value="">Please select any </option>
+                                                @foreach (var head in Model.HeadAccounts)
+                                                {
+                                                    foreach (var sub in head.SubHeadAccounts)
+                                                    {
+                                                        <option value="@sub.sub_head_id"> @head.MainAccount.name -> @head.name -> @sub.name</option>
+                                                    }
+                                                  
+                                                }
+
+
+                                            </select>
+                                        </div>
+                                  </div>
+                                    <div class="form-group">
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
+                                            TransactionAccount <span class="required">*</span>
+                                        </label>
+
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select name="transactionAccount" required class="form-control chzn-select col-md-7 col-xs-12">
+                                                <option value="">Please select any </option>
+                                                @foreach (var head in Model.HeadAccounts)
+                                                {
+                                                    foreach (var sub in head.SubHeadAccounts)
+                                                    {
+                                                        foreach(var trans in sub.TransactionAccounts)
+                                                        {
+                                                            <option value="@trans.id">@head.name ->  @sub.name -> @trans.name </option>
+                                                        }
+                                                    }
                                                 }
 
 
@@ -106,12 +145,12 @@
                                     </div>
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                            To <span class="required">*</span>
+                                            From <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select name="to" required class="form-control chzn-select col-md-7 col-xs-12">
+                                            <select name="from" required class="form-control chzn-select col-md-7 col-xs-12">
                                                 <option value="">Please select any </option>
-                                                @foreach (var tr in Model)
+                                                @foreach (var tr in ViewBag.from)
                                                 {
                                                     <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
                                                 }
@@ -125,29 +164,6 @@
                                             <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="amount" required>
                                         </div>
                                     </div>
-
-                                    <div class="from-group">
-                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Cheque type </label>
-                                        <label style="margin-right:20px;"> <input type="radio" value="cash" name="chequeType" checked />Cash </label>
-                                        <label>  <input type="radio" value="cross" name="chequeType" /> Cross </label>
-                                        <label>  <input type="radio" value="none" name="chequeType" /> None </label>
-                                    </div>
-
-
-                                    <div class="form-group">
-                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Tax % </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="tax" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group">
-                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Cheque # </label>
-                                        <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="chequeNo" required>
-                                        </div>
-                                    </div>
-
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Date </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">

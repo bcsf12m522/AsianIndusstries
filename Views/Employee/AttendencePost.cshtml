@@ -1,13 +1,8 @@
-﻿@model List<ranglerz_project.Models.Employee>
-
-
+﻿@model List<ranglerz_project.Models.Attendence>
 @{
-    ViewBag.Title = "ViewUsers";
+    ViewBag.Title = "AttendencePOst";
+
 }
-
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -61,7 +56,7 @@
                     <div class="page-title">
                         <div class="title_left">
                             <h3>
-                                All Employees
+                                Attendence Post
                             </h3>
                         </div>
 
@@ -74,70 +69,80 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>View Employee list</h2>
+                                    <h2>Date : @ViewBag.Date.ToShortDateString()</h2>
                                     <div class="clearfix"></div>
                                 </div>
+
+
                                 <div class="x_content">
+
                                     <table id="example" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
                                             <tr class="headings">
-
+                                                <th>ID</th>
                                                 <th>Name </th>
-                                                <th>City </th>
-                                                <th>Phone</th>
-                                                <th>Picture </th>
-                                                <th>Status </th>
-                                                <th>Location</th>
-                                                <th>CNIC</th>
+                                                <th>Present </th>
+                                                <th>Absent</th>
+                                                <th>Time in </th>
+                                                <th>Time out </th>
                                                 <th>Action</th>
+
 
                                             </tr>
                                         </thead>
+                                        @foreach (var v in Model)
+                                        {
+                                            <form action="@Url.Action("AttendencePost", "Employee", new {id = @v.Id })" method="post">
 
-                                        <tbody>
-
-                                            @foreach (var v in Model)
-                                            {
-                                                <tr class="even pointer">
+                                                <tbody>
 
 
-                                                    <td class=" ">@v.Name</td>
-                                                    <td class=" ">@v.City </td>
-                                                    <td>@v.phone</td>
-                                                    <td class=" ">
-                                                        @{
-                                                var Base64 = Convert.ToBase64String(v.image_);
-                                                var imgsrc = string.Format("data:img/gif;base64,{0}", Base64);
+
+                                                    <tr class="even pointer">
+
+                                                        <td>@v.Id</td>
+                                                        <td class=" ">@v.Employee.Name</td>
+                                                        @if (@v.present == 1)
+                                                        {
+                                                            <td><input type="checkbox" value="present" checked name="present"> </td>
                                                         }
-                                                        <img src="@imgsrc" style="max-height:100px; max-width:100px;" />
-                                                    </td>
-                                                    @if (v.is_active == "Y")
-                                                    {
-                                                        <td>Active</td>
-                                                    }
-                                                    else
-                                                    {
-                                                        <td>Deactive</td>
-                                                    }
-                                                    <td>@v.location</td>
-                                                    <td>@v.cnic</td>
+                                                        else
+                                                        {
+                                                            <td><input type="checkbox" value="present" name="present"> </td>
+                                                        }
+                                                        @if (@v.absent == 1)
+                                                        {
+                                                            <td><input type="checkbox" checked value="absent" name="present"> </td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td><input type="checkbox" value="absent" name="present"> </td>
+                                                        }
+
+
+                                                        <td><input class="" type="time" value="@v.time_in_" name="timeIn" required> </td>
+                                                        <td> <input class="" type="time" value="@v.time_out" name="timeOut" required> </td>
 
 
 
 
-                                                    <td>
-                                                        <a href="~/Employee/Edit/@v.Id/">Update</a> &nbsp;&nbsp;&nbsp;
-                                                        <a href="~/Employee/Delete/@v.Id/" onclick="return confirm('Are you sure you want to Delete?')">Delete</a>&nbsp;&nbsp;&nbsp;
-                                                        <a href="~/Employee/Detail/@v.Id/">View Detail</a>
-                                                    </td>
+
+                                                        <td>
+
+                                                            <input type="submit" value="Add" />
+
+                                                        </td>
 
 
-                                                </tr>
-                                            }
+                                                    </tr>
 
 
-                                        </tbody>
 
+
+                                                </tbody>
+                                                <input type="hidden" name="date" value="@v.date" />
+                                            </form>
+                                        }
                                     </table>
 
                                 </div>
@@ -153,7 +158,7 @@
                     </div>
                     <br />
                     <br />
-                    <a class="btn-success  actionBar" href="~/Employee/Create/">Create Employee</a>
+
                 </div>
 
             </div>
