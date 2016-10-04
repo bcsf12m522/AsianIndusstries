@@ -1,18 +1,13 @@
-﻿@model List<ranglerz_project.Models.TransactionAccount>
-
+﻿@model List<ranglerz_project.Models.Transaction>
 @{
-    
-    ViewBag.Title = "Reports";
+    ViewBag.Title = "VoucherPermission";
     var sesion = Session["name"].ToString();
-    int result1;
-    int result2;
 }
 
 
 
 
-<!DOCTYPE html>
-<html lang="en">
+
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -98,43 +93,7 @@
 
                     </div>
                     <div class="clearfix"></div>
-                    <div class="row">
-                        <div class="x_content">
-                            <br />
-                            <form id="demo-form2" action="@Url.Action("historyPost", "Transactions")" method="post" data-parsley-validate class="form-horizontal form-label-left">
-
-                                <div class="form-group">
-
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <select name="search" required class="form-control chzn-select col-md-7 col-xs-12">
-                                            <option value="">Please select any </option>
-                                            @foreach (var tr in ViewBag.Mylist)
-                                            {
-                                                <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
-                                            }
-
-                                            
-
-                                        </select>
-                                        <input type="date" name="dateStart" required />
-                                        <input type="date" name="dateEnd" required />
-                                    </div>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                        <input type="submit" value="Search" class="btn btn-success" />
-                                    </div>
-                                </div>
-                                <div class="ln_solid"></div>
-                        
-
-                            </form>
-
-
-
-
-                        </div>
-
-                    </div>
+                    
 
                     <div class="row">
 
@@ -169,18 +128,17 @@
 
                                         <tbody>
 
-                                            @foreach (var v in Model)
-                                            {
-                                                foreach (var t in v.Transactions.OrderBy(x=>x.created_at).ToList())
+                                            
+                                            
+                                                @foreach (var t in Model.Where(x=>x.is_active=="N").OrderBy(x=>x.created_at).ToList())
                                                 {
-                                                    result1 = DateTime.Compare(ViewBag.start, t.created_at);
-                                                    result2 = DateTime.Compare(ViewBag.end, t.created_at);
                                                     
-                                                if(result1 < 0 || result1 == 0)
+                                                    
+                                               
                                                    
-                                                {  
-                                                       if(result2 != -1)
-                                                       { 
+                                                  
+                                                     
+                                                       
                                                     
                                                                     <tr class="even pointer">
                                                                     <td>@t.Id</td>
@@ -220,8 +178,8 @@
 
 
                                                                 </tr>
-                                                       }
-                                               }
+                                                       
+                                               
                                             }
                                        }
                                         </tbody>
@@ -270,6 +228,7 @@
 </body>
 
 </html>
+
 
 
 
