@@ -36,6 +36,10 @@
         <AssociationConnector Association="Database1Model.FK_ExpenseTransactions_ToTable_2" />
         <AssociationConnector Association="Database1Model.FK_ExpenseTransactions_ToTable_3" />
         <AssociationConnector Association="Database1Model.FK_ExpenseTransactions_ToTable_4" />
+        <EntityTypeShape EntityType="Database1Model.TemporaryReport" Width="1.5" PointX="15.75" PointY="1.25" />
+        <AssociationConnector Association="Database1Model.FK_TempReport_Admin" />
+        <AssociationConnector Association="Database1Model.FK_TempReport_ToTable" />
+        <AssociationConnector Association="Database1Model.FK_TempReport_Users" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
