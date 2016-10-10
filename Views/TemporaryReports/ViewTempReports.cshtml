@@ -83,6 +83,7 @@
                                                 <th>Item </th>
                                                 <th>Amount/Qty </th>
                                                 <th>Post </th>
+                                                <th>Action </th>
 
                                             </tr>
                                         </thead>
@@ -92,7 +93,7 @@
 
                                             @foreach (var v in Model.Where(x=>x.is_active=="Y").OrderBy(x=>x.created_at))
                                             {
-                                                if(v.Id%2 !=0  )
+                                                if(v.Id%2 !=0 )
                                                     
                                                 {
 
@@ -121,32 +122,34 @@
                                                     
                                                             @if(v.voucher_type=="BV")
                                                             { 
-                                                            <a href="@Url.Action("bankPost","Transactions",new {id =@v.Id})"> ok</a>
+                                                            <a href="@Url.Action("bankPost","Transactions",new {id =@v.Id})"> OK</a>
                                                             }
                                                             else if (v.voucher_type == "JV")
                                                             {
-                                                                <a href="@Url.Action("journalPost","Transactions",new {id =@v.Id})"> ok</a>
+                                                                <a href="@Url.Action("journalPost","Transactions",new {id =@v.Id})"> OK</a>
                                                             }
                                                             else if (v.voucher_type == "BP")
                                                             {
-                                                                <a href="@Url.Action("bankPaymentPost","Transactions",new {id =@v.Id})"> ok</a>
+                                                                <a href="@Url.Action("bankPaymentPost","Transactions",new {id =@v.Id})"> OK</a>
                                                             }
                                                             else if (v.voucher_type == "CP")
                                                             {
-                                                                <a href="@Url.Action("cashPaymentPost","Transactions",new {id =@v.Id})"> ok</a>
+                                                                <a href="@Url.Action("cashPaymentPost","Transactions",new {id =@v.Id})"> OK</a>
                                                             }
                                                             else if (v.voucher_type == "CR")
                                                             {
-                                                                <a href="@Url.Action("cashReceivedPost", "Transactions", new { id = @v.Id })"> ok</a>
+                                                                <a href="@Url.Action("cashReceivedPost", "Transactions", new { id = @v.Id })"> OK</a>
                                                             }
                                                             else if(v.voucher_type=="EV")
                                                             {
-                                                                <a href="@Url.Action("ExpensePost", "ExpenseVoucher", new { id = @v.Id })"> ok</a>
+                                                                <a href="@Url.Action("ExpensePost", "ExpenseVoucher", new { id = @v.Id })"> OK</a>
                                                             }
                                                             else
                                                             {
-                                                                <a href="@Url.Action("AddSaleVoucher", "SaleVoucher", new { id = @v.Id })"> ok</a>
+                                                                <a href="@Url.Action("AddSaleVoucher", "SaleVoucher", new { id = @v.Id })"> OK</a>
                                                             }
+                                                         </td>   
+                                                        <td><a href="@Url.Action("Delete", "TemporaryReports", new { id = @v.Id })"> Delete</a></td>  
                                                 </tr>
                                                     
                                                 }
