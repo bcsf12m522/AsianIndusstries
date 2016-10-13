@@ -21,11 +21,6 @@
         <AssociationConnector Association="Database1Model.FK_Transaction_Admin" />
         <AssociationConnector Association="Database1Model.FK_Transaction_ToTable" />
         <AssociationConnector Association="Database1Model.FK_Transaction_Users" />
-        <EntityTypeShape EntityType="Database1Model.Good_Types" Width="1.5" PointX="5.375" PointY="6.75" />
-        <EntityTypeShape EntityType="Database1Model.Good" Width="1.5" PointX="9.75" PointY="10.75" />
-        <EntityTypeShape EntityType="Database1Model.UnitRate" Width="1.5" PointX="12" PointY="10.875" />
-        <AssociationConnector Association="Database1Model.FK_Goods_transaction" />
-        <AssociationConnector Association="Database1Model.FK_UnitRate_GOODs" />
         <EntityTypeShape EntityType="Database1Model.Employee" Width="1.5" PointX="5.375" PointY="9.75" />
         <EntityTypeShape EntityType="Database1Model.Attendence" Width="1.5" PointX="7.625" PointY="14.625" />
         <AssociationConnector Association="Database1Model.FK_Attendence_Employee" />
@@ -40,6 +35,12 @@
         <AssociationConnector Association="Database1Model.FK_TempReport_Admin" />
         <AssociationConnector Association="Database1Model.FK_TempReport_ToTable" />
         <AssociationConnector Association="Database1Model.FK_TempReport_Users" />
+        <EntityTypeShape EntityType="Database1Model.Good_Types" Width="1.5" PointX="5.375" PointY="7" />
+        <EntityTypeShape EntityType="Database1Model.Good" Width="1.5" PointX="9.75" PointY="18.75" />
+        <EntityTypeShape EntityType="Database1Model.UnitRate" Width="1.5" PointX="12" PointY="19.25" />
+        <AssociationConnector Association="Database1Model.FK_Goods_transaction" />
+        <AssociationConnector Association="Database1Model.FK_Goods_Vendors" />
+        <AssociationConnector Association="Database1Model.FK_UnitRate_GOODs" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

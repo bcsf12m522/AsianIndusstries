@@ -83,7 +83,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>Reports <small></small></h2>
+                                <h2>Search By Transaction Account <small></small></h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
@@ -97,16 +97,16 @@
                                                 <option value="">Please select any </option>
                                                 @foreach (var tr in Model)
                                                 {
-                                                    
-                                                     
+
+
                                                     <option value="@tr.name">@tr.MainAccount.name -> @tr.HeadAccount.name -> @tr.SubHeadAccount.name -> @tr.name </option>
-                                                    
+
                                                 }
 
 
                                             </select>
                                             <input type="date" name="dateStart" required />
-                                            <input type="date" name="dateEnd"  required/>
+                                            <input type="date" name="dateEnd" required />
                                         </div>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
 
@@ -115,13 +115,117 @@
                                     </div>
 
 
-
+                                </form>
 
                             </div>
 
+
+                          
+
+
+
+
+
+
+
+
+                            <div class="x_title">
+                                <h2>Search By HeadAccounts <small></small></h2>
+                                <div class="clearfix"></div>
+                            </div>
+
+
+                            <div class="x_content">
+                                <br />
+                                <form id="demo-form2" action="@Url.Action("ExpenseReportsPostHead","ExpenseVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+
+                                    <div class="form-group">
+
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select name="search" required class="form-control chzn-select col-md-7 col-xs-12">
+                                                <option value="">Please select any </option>
+                                                @foreach (var tr in ViewBag.headAccounts)
+                                                {
+
+
+                                                    <option value="@tr.name">@tr.MainAccount.name -> @tr.name  </option>
+
+                                                }
+
+
+                                            </select>
+                                            <input type="date" name="dateStart" required />
+                                            <input type="date" name="dateEnd" required />
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                            <input type="submit" value="Search" class="btn btn-success" />
+                                        </div>
+                                    </div>
+
+
+                                </form>
+
+                            </div>
+
+
+
+
+
+
+
+
+
+                            <div class="x_title">
+                                <h2>Search By SubHead <small></small></h2>
+                                <div class="clearfix"></div>
+                            </div>
+
+
+
+
+
+
+                            <div class="x_content">
+                                <br />
+                                <form id="demo-form2" action="@Url.Action("ExpenseReportsPostSub", "ExpenseVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+
+                                    <div class="form-group">
+
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <select name="search" required class="form-control chzn-select col-md-7 col-xs-12">
+                                                <option value="">Please select any </option>
+                                                @foreach (var tr in ViewBag.subHeadAccounts)
+                                                {
+
+
+                                                    <option value="@tr.name">@tr.MainAccount.name -> @tr.HeadAccount.name ->  @tr.name </option>
+
+                                                }
+
+
+                                            </select>
+                                            <input type="date" name="dateStart" required />
+                                            <input type="date" name="dateEnd" required />
+                                        </div>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                            <input type="submit" value="Search" class="btn btn-success" />
+                                        </div>
+                                    </div>
+
+
+                                </form>
+
+                            </div>
+
+
+                            
+
+
                             <div class="ln_solid"></div>
 
-                            </form>
+
                         </div>
                     </div>
                 </div>

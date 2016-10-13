@@ -4,6 +4,9 @@
     var sesion = Session["name"].ToString();
     int result1;
     int result2;
+    float clientWeight = 0;
+    float originalweight= 0;
+    float difference = 0;
 }
 
 
@@ -217,10 +220,17 @@
                                                                                 <td> @t.good_</td>
                                                                                 <td>@t.client_s_weight</td>
                                                                                 <td>@t.quantity</td>
+                                                                                @{
+                                                                                    if(t.client_s_weight != null)
+                                                                                    { 
+                                                                                    clientWeight = (float)(clientWeight + t.client_s_weight);
+                                                                                    }
+                                                                                    originalweight =(float) (originalweight + t.net_weight);
+                                                                                }
                                                                                 <td><a href="@Url.Action("Edit","SaleVoucher" , new {id= @t.Id} )">Edit</a></td>
 
 
-
+                                                                           
 
 
                                                                             </tr>
@@ -229,9 +239,17 @@
                                                 }
 
                                             }
-                                        </tbody>
 
+                                          
+                                        </tbody>
+                                       
                                     </table>
+                                    @{
+                                        difference = originalweight - clientWeight;
+                                    }
+                                    <p>Total Client Weight : @clientWeight</p>
+                                    <p>Total Net Weight : @originalweight</p>
+                                    <p>Difference : @difference</p>
                                 </div>
                             </div>
                         </div>
