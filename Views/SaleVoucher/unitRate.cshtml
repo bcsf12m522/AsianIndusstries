@@ -1,10 +1,10 @@
-﻿@model List<ranglerz_project.Models.Good>
+﻿@model List<ranglerz_project.Models.TransactionAccount>
 
 @{
     ViewBag.Title = "unitRate";
 }
 
-
+<html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -94,7 +94,7 @@
                                                 <option value="">Please select any </option>
                                                 @foreach (var tr in Model)
                                                 {
-                                                    <option value="@tr.good_Name">@tr.TransactionAccount.name -> @tr.good_Name </option>
+                                                    <option value="@tr.name">@tr.name </option>
                                                 }
 
                                             </select>
@@ -113,31 +113,12 @@
                                                 <option value="">Please select any </option>
                                                 @foreach (var tr in ViewBag.myList)
                                                 {
-                                                    <option value="@tr.type">@tr.type </option>
+                                                    <option value="@tr.good_Name">@tr.TransactionAccount.name -> @tr.good_Name </option>
                                                 }
 
                                             </select>
                                         </div>
                                     </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -191,7 +172,7 @@
 
     </div>
 
-    </div>
+  
 
     <script src="~/Scripts/js/bootstrap.min.js"></script>
 

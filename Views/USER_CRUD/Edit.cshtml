@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ranglerz_project.Models.User
+@{
 
     ViewBag.Title = "User Updation";
 }
@@ -159,6 +160,7 @@
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <div id="gender" class="btn-group" style="margin-top:8px;">
 
+                                             
 
                                                 @if (@Model.account_view == "Y")
                                                 {
@@ -207,6 +209,552 @@
 
 
                                     </div>
+
+
+<!---->
+
+
+                                    <div class="clearfix"></div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Employee Module Permissions</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                        <div id="gender" class="btn-group" style="margin-top:8px;">
+
+                                      
+                                          @if (Model.emplyee_view == 1)
+                                          {
+                                            <input type="checkbox" name="empView" value="empView" checked> <label>View</label>
+                                          }
+                                          
+                                          @if (Model.emplyee_view == 0)
+                                          {
+                                            <input type="checkbox" name="empView" value="empView"> <label>View</label>
+                                          }
+                                           
+                                          @if (Model.employee_add == 1)
+                                          {
+                                            <input type="checkbox" name="empCreate" value="empCreate" checked><label>Create</label>
+                                          }
+                                          @if (Model.employee_add == 0)
+                                          {
+                                            <input type="checkbox" name="empCreate" value="empCreate"><label>Create</label>
+                                          }
+                                          @if (Model.employee_delete == 1)
+                                          {
+                                            <input type="checkbox" name="empDelete" value="empDelete" checked><label>Delete</label>
+                                          }
+                                          @if (Model.employee_delete == 0)
+                                          {
+                                            <input type="checkbox" name="empDelete" value="empDelete"><label>Delete</label>
+                                          }
+                                          @if (Model.employee_edit == 1)
+                                          {
+                                            <input type="checkbox" name="empUpdate" value="empUpdate" checked><label>Edit</label>
+                                          }
+                                          @if (Model.employee_edit == 0)
+                                          {
+                                            <input type="checkbox" name="empUpdate" value="empUpdate" ><label>Edit</label>
+                                          }  
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                    <div class="clearfix"></div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Reports View Permissions</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                        <div id="gender" class="btn-group" style="margin-top:8px;">
+
+                                            @if(Model.all_reports==1)
+                                            {
+                                                <input type="checkbox" name="viewAll" value="viewAll" checked><label>View All</label>
+                                            }
+                                            @if (Model.all_reports == 0)
+                                            {
+                                                <input type="checkbox" name="viewAll" value="viewAll"> <label>View All</label>
+                                            }
+                                            
+                                            @if (Model.sale_reports == 1)
+                                            {
+                                                <input type="checkbox" name="viewSale" checked value="viewSale"><label>View Sale</label>
+                                            }
+                                            @if (Model.sale_reports == 0)
+                                            {
+                                                <input type="checkbox" name="viewSale" value="viewSale"> <label>View Sale</label>
+                                            }
+
+                                            
+                                            @if (Model.expense_reports == 1)
+                                            {
+                                                <input type="checkbox" name="viewExpense" value="viewExpense" checked><label> View Expense </label>
+                                            }
+                                            
+                                            @if (Model.expense_reports == 0)
+                                            {
+                                                <input type="checkbox" name="viewExpense" value="viewExpense"><label> View Expense </label>
+                                            }
+
+
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="clearfix"></div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Reports Edit Permissions</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                        <div id="gender" class="btn-group" style="margin-top:8px;">
+                                            @if (Model.all_reports_edit == 1)
+                                            {
+                                               <input type="checkbox" name="editAll" checked value="editAll"> <label>Edit All </label>
+                                            }
+                                            @if (Model.all_reports_edit == 0)
+                                            {
+                                                <input type="checkbox" name="editAll" value="editAll"> <label>Edit All </label>
+                                            }    
+                                                
+
+                                             
+                                            @if (Model.sale_reports_edit == 1)
+                                            {
+                                                <input type="checkbox" name="editSale" value="editSale" checked> <label> Edit Sale </label>
+                                            }
+                                            @if (Model.sale_reports_edit == 0)
+                                            {
+                                                <input type="checkbox" name="editSale" value="editSale"> <label> Edit Sale </label>
+                                            }
+
+
+
+                                          
+                                            @if (Model.expense_reports_edit == 1)
+                                            {
+                                                <input type="checkbox" name="editExpense" value="editExpense" checked> <label>Edit Expense </label>
+                                            }
+                                            @if (Model.expense_reports_edit == 0)
+                                            {
+                                                <input type="checkbox" name="editExpense" value="editExpense"> <label>Edit Expense </label>
+                                            }
+
+                                           
+
+
+
+
+
+
+
+
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+
+                                    <div class="clearfix"></div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Vouchers Module Permissions</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                        <div id="gender" class="btn-group" style="margin-top:8px;">
+
+                                            @if (Model.JV == 1)
+                                            {
+                                                
+                                              <input type="checkbox" name="jv" value="jv" checked> <label>Journal</label>
+
+                                            }
+                                            
+                                            @if (Model.JV == 0)
+                                            {
+                                                <input type="checkbox" name="jv" value="jv"> <label>Journal</label>
+                                            }
+
+                                            @if(Model.BR==1)
+                                            {
+                                                <input type="checkbox" name="br" value="br" checked><label> Bank Received</Label>
+                                            }
+                                            
+                                            @if (Model.BR == 0)
+                                            {
+                                                <input type="checkbox" name="br" value="br"><label> Bank Received</label>
+                                            }
+                                            
+
+                                            @if (Model.BP == 1)
+                                            {
+                                                <input type="checkbox" name="bp" checked value="bp"><label>Bank Payment</label>
+                                            }
+                                            @if (Model.BP == 0)
+                                            {
+                                                <input type="checkbox" name="bp" value="bp"><label>Bank Payment</label>
+                                            }
+
+                                            
+                                            @if (Model.CR == 1)
+                                            {
+                                                <input type="checkbox" name="cr" checked value="cr"> <label> Cash Received </label>
+                                            }
+                                            @if (Model.CR == 0)
+                                            {
+                                                <input type="checkbox" name="cr" value="cr"> <label> Cash Received </label>
+                                            }
+
+                                          
+                                            @if (Model.CP == 1)
+                                            {
+                                                <input type="checkbox" name="cp" checked value="cp"> <label>Cash Payment</label>
+                                            }
+                                            @if (Model.CP == 0)
+                                            {
+                                                <input type="checkbox" name="cp" value="cp"> <label>Cash Payment</label>
+                                            }
+
+
+
+                                         
+                                            @if (Model.SV == 1)
+                                            {
+                                                <input type="checkbox" checked name="sv" value="sv"> <label>Sale</label>
+                                            }
+                                            @if (Model.SV == 0)
+                                            {
+                                                <input type="checkbox" name="sv" value="sv"> <label>Sale</label>
+                                            }
+
+                                        
+                                            @if (Model.PV == 1)
+                                            {
+                                                <input type="checkbox" name="pv" checked value="pv"><label>Purchase</label>
+                                            }
+                                            @if (Model.PV == 0)
+                                            {
+                                                <input type="checkbox" name="pv" value="pv"><label>Purchase</label>
+                                            }
+
+
+
+                                            
+                                            @if (Model.UPSV == 1)
+                                            {
+                                                <input type="checkbox" name="upsv" checked value="upsv"><label>Unit Price Sale </label>
+                                            }
+                                            @if (Model.UPSV == 0)
+                                            {
+                                                <input type="checkbox" name="upsv" value="upsv"><label>Unit Price Sale </label>
+                                            }
+                                          
+                                            @if (Model.UPPV == 1)
+                                            {
+                                                <input type="checkbox" name="uppv" checked value="uppv"><label> Unit Price Purchase </label>
+                                            }
+                                            @if (Model.UPPV == 0)
+                                            {
+                                                <input type="checkbox" name="uppv" value="uppv"><label> Unit Price Purchase </label>
+                                            }
+
+                                           
+                                            @if (Model.EV == 1)
+                                            {
+                                                <input type="checkbox" name="ev" checked value="ev"> <label>Expense</label>
+                                            }
+                                            @if (Model.EV == 0)
+                                            {
+                                                <input type="checkbox" name="ev" value="ev"> <label>Expense</label>
+                                            }
+
+                                        
+
+
+
+
+
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="clearfix"></div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">SuperVision Permission</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                        <div id="gender" class="btn-group" style="margin-top:8px;">
+
+                                            @if (Model.supervision == 1)
+                                            {
+                                                <input type="checkbox" name="supervision" checked value="supervision"><label>Allow</label>
+                                            }
+                                            
+                                            @if (Model.supervision == 0)
+                                            {
+                                                <input type="checkbox" name="supervision" value="supervision"><label>Allow</label>
+                                            }
+                                           
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="clearfix"></div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Goods Management Permissions</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                        <div id="gender" class="btn-group" style="margin-top:8px;">
+
+                                            @if (Model.view_goods == 1)
+                                            {
+                                                <input type="checkbox" name="viewGoods" checked value="viewGoods"><label> View Goods </label>
+                                            }
+                                            @if (Model.view_goods == 0)
+                                            {
+                                                <input type="checkbox" name="viewGoods" value="viewGoods"><label> View Goods </label>
+                                            }
+
+
+                                           
+
+                                            @if (Model.add_goods == 1)
+                                            {
+                                                <input type="checkbox" name="addGood" checked value="addGood"> <label> Add Good </label>
+                                            }
+                                            @if (Model.add_goods == 0)
+                                            {
+                                                <input type="checkbox" name="addGood" value="addGood"> <label> Add Good </label>
+                                            }
+                                            
+
+                                       
+                                            @if (Model.edit_goods == 1)
+                                            {
+                                                <input type="checkbox" name="editGood" checked value="editGood"> <label>Edit Good  </label>
+                                            }
+                                            @if (Model.edit_goods == 0)
+                                            {
+                                                <input type="checkbox" name="editGood" value="editGood"> <label>Edit Good  </label>
+                                            }
+
+                                            
+                                            @if (Model.delete_goods == 1)
+                                            {
+                                                <input type="checkbox" name="deleteGood" checked value="deleteGood"> <label> Delete Goods </label>
+                                            }
+                                            @if (Model.delete_goods == 0)
+                                            {
+                                                <input type="checkbox" name="deleteGood" value="deleteGood"> <label> Delete Goods </label>
+                                            }
+
+
+
+                                           
+
+
+
+
+
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="clearfix"></div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Goods Types Permissions</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                        <div id="gender" class="btn-group" style="margin-top:8px;">
+                                            @if (Model.add_goodTypes == 1)
+                                            {
+                                                <input type="checkbox" name="addType" checked value="addType"> <label>Add  </label>
+                                            }
+                                            @if (Model.add_goodTypes == 0)
+                                            {
+                                                <input type="checkbox" name="addType" value="addType"> <label>Add  </label>
+                                            }
+                                            
+
+                                            @if (Model.edit_goodTypes == 1)
+                                            {
+                                                <input type="checkbox" name="editType" checked value="editType"> <label>Edit  </label>
+                                            }
+                                            @if (Model.edit_goodTypes == 0)
+                                            {
+                                                <input type="checkbox" name="editType" value="editType"> <label>Edit  </label>
+                                            }
+
+                                          
+
+                                            @if (Model.delete_goodTypes == 1)
+                                            {
+                                                <input type="checkbox" name="deleteType" checked value="deleteType"><label>Delete </label>
+                                            }
+                                            @if (Model.delete_goodTypes == 0)
+                                            {
+                                                <input type="checkbox" name="deleteType" value="deleteType"><label>Delete </label>
+                                            }
+
+
+                                           
+
+                                            @if (Model.view_goodTypes == 1)
+                                            {
+                                                <input type="checkbox" name="viewType" checked value="viewType"> <label>View  </label>
+                                            }
+                                            @if (Model.view_goodTypes == 0)
+                                            {
+                                                <input type="checkbox" name="viewType" value="viewType"> <label>View  </label>
+                                            }
+                                            
+
+                                            @if (Model.add_unitRate == 1)
+                                            {
+                                                <input type="checkbox" name="unitRate" checked value="unitRate"> <label>Add Unit Rate </label>
+                                            }
+                                            @if (Model.add_unitRate == 0)
+                                            {
+                                                <input type="checkbox" name="unitRate" value="unitRate"> <label>Add Unit Rate </label>
+                                            }
+
+                                            
+
+
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+                                    <div class="clearfix"></div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Attendence Permissions</label>
+                                    <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                        <div id="gender" class="btn-group" style="margin-top:8px;">
+                                            @if (Model.attendence_reports == 1)
+                                            {
+                                                <input type="checkbox" name="atdReports" checked value="atdReports"><label> Reports </label>
+                                            }
+                                            @if (Model.attendence_reports == 0)
+                                            {
+                                                <input type="checkbox" name="atdReports" value="atdReports"><label> Reports </label>
+                                            }
+                                            
+
+
+                                          
+
+                                            @if (Model.view_attendence == 1)
+                                            {
+                                                <input type="checkbox" name="atdView" checked value="atdView"> <label> View  </label>
+                                            }
+                                            @if (Model.view_attendence == 0)
+                                            {
+                                                <input type="checkbox" name="atdView"  value="atdView"> <label> View  </label>
+                                            }
+
+                                           
+
+                                            @if (Model.edit_attendence == 1)
+                                            {
+                                                <input type="checkbox" name="atdEdit" checked value="atdEdit"> <label>Edit  </label>
+                                            }
+                                            @if (Model.edit_attendence == 0)
+                                            {
+                                                <input type="checkbox" name="atdEdit" value="atdEdit"> <label>Edit  </label>
+                                            }
+
+                                           
+
+                                            @if (Model.add_attedence == 1)
+                                            {
+                                                <input type="checkbox" name="atdAdd" checked value="atdAdd"> <label> Add </label>
+                                            }
+                                            @if (Model.add_attedence == 0)
+                                            {
+                                                <input type="checkbox" name="atdAdd" value="atdAdd"> <label> Add </label>
+                                            }
+
+
+                                           
+
+
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!---->
+
                                     <div class="ln_solid"></div>
                                     <div class="form-group">
                                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
