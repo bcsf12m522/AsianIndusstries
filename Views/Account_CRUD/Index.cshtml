@@ -123,7 +123,7 @@
 
                         <!--FIRST LOOP FOR MAIN ACCOUNT-->
 
-           @foreach (var main in Model)
+           @foreach (var main in Model.Where(x=>x.is_active=="Y"))
            {
                mainCount++;
             <div class="col-md-10">

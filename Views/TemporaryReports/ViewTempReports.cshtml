@@ -149,7 +149,7 @@
                                                                 <a href="@Url.Action("AddSaleVoucher", "SaleVoucher", new { id = @v.Id })"> OK</a>
                                                             }
                                                          </td>   
-                                                        <td><a href="@Url.Action("Delete", "TemporaryReports", new { id = @v.Id })"> Delete</a></td>  
+                                                        <td><a href="@Url.Action("Delete", "TemporaryReports", new { id = @v.Id })" onclick="return confirm('Are you sure you want to Delete?')"> Delete</a></td>  
                                                 </tr>
                                                     
                                                 }

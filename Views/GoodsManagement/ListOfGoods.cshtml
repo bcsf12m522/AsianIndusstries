@@ -106,7 +106,7 @@
                                                         <td>@v.good_Type</td>
                                                         <td>@v.TransactionAccount.name</td>
                                                         <td><a href="~/GoodsManagement/Edit/@v.Id">Edit</a>
-                                                        <a href="~/GoodsManagement/Delete/@v.Id">Delete</a></td>
+                                                            <a href="~/GoodsManagement/Delete/@v.Id" onclick="return confirm('Are you sure you want to Delete?')">Delete</a></td>
                                                     </tr>
 
                                                 </tbody>
