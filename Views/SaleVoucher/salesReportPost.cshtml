@@ -7,6 +7,7 @@
     float clientWeight = 0;
     float originalweight= 0;
     float difference = 0;
+    var balance = ViewBag.openingBalance;
 }
 
 
@@ -112,8 +113,8 @@
 
 
                                         </select>
-                                        <input type="date" name="dateStart" required />
-                                        <input type="date" name="dateEnd" required />
+                                        <input type="date" id="dateDefault" name="dateStart" required />
+                                        <input type="date" id="dateDefault2" name="dateEnd" required />
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
 
@@ -137,14 +138,15 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>View Sale Reports</h2>
+                                      <h2><strong>View Reports:</strong>@ViewBag.search &nbsp;&nbsp;&nbsp;<strong>Opening Balance(Rs.):</strong>@ViewBag.openingBalance</h2>
+
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
                                     <table id="example" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
                                             <tr class="headings">
-                                                <th>ID</th>
+                                           
                                                 @if (sesion == "Admin")
                                                 {
                                                     <th>User Name</th>
@@ -188,7 +190,7 @@
 
                                                         { 
                                                                             <tr class="even pointer">
-                                                                                <td>@t.Id</td>
+                                                                          
                                                                                 @if (sesion == "Admin")
                                                                                 {
                                                                                     if (t.User != null)
@@ -213,8 +215,21 @@
                                                                                 <td>@t.bags</td>
                                                                                 <td>@t.truck</td>
                                                                                 @{
-                                                                                var tt = Convert.ToInt64(t.balance);
-                                                                                var balance = String.Format("{0:#,##0.00}", tt);
+                                                                                    
+                                                                                     if (t.cr > 0)
+                                                                                            {
+                                                                                                balance = balance + t.cr;
+                                                                                            }
+                                                                                         
+                                                                                     else
+                                                                                            {
+                                                                                                balance = balance - t.dr;
+                                                                                            }
+                                                                                     
+                                                                                    
+                                                                         
+                                                                                    //   var tt = Convert.ToInt64(t.balance);
+                                                                                    //var balance = String.Format("{0:#,##0.00}", tt);
                                                                                 }
                                                                                 <td> @t.builty_no_</td>
                                                                                 <td> @t.good_</td>
@@ -270,6 +285,71 @@
     <script src="~/Scripts/js/bootstrap.min.js"></script>
 
     <script src="~/Scripts/js/custom.js"></script>
+
+    <script>
+    function setInputDate(_id) {
+        var _dat = document.querySelector(_id);
+        var hoy = new Date(),
+            d = hoy.getDate(),
+            m = hoy.getMonth() + 1,
+            y = hoy.getFullYear(),
+            data;
+
+        if (d < 10) {
+            d = "0" + d;
+        };
+        if (m < 10) {
+            m = "0" + m;
+        };
+
+        data = y + "-" + m + "-" + d;
+        console.log(data);
+        _dat.value = data;
+    };
+
+    setInputDate("#dateDefault");
+    </script>
+    <script>
+        function setInputDate(_id) {
+            var _dat = document.querySelector(_id);
+            var hoy = new Date(),
+                d = hoy.getDate(),
+                m = hoy.getMonth() + 1,
+                y = hoy.getFullYear(),
+                data;
+
+            if (d < 10) {
+                d = "0" + d;
+            };
+            if (m < 10) {
+                m = "0" + m;
+            };
+
+            data = y + "-" + m + "-" + d;
+            console.log(data);
+            _dat.value = data;
+        };
+
+        setInputDate("#dateDefault2");
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <script type="text/javascript">
     function confirm_delete() {

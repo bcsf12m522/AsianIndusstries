@@ -4,7 +4,7 @@
     var sesion = Session["name"].ToString();
     int result1;
     int result2;
-   
+    var balance = ViewBag.openingBalance;
    
 }
 
@@ -221,14 +221,14 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>View Reports</h2>
+                                    <h2><strong>View Reports:</strong>@ViewBag.search &nbsp;&nbsp;&nbsp;<strong>Opening Balance(Rs.):</strong>@ViewBag.openingBalance</h2>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
                                     <table id="example" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
                                             <tr class="headings">
-                                                <th>ID</th>
+                                        
                                                 @if (sesion == "Admin")
                                                 {
                                                     <th>User Name</th>
@@ -269,7 +269,7 @@
                                     
                                                                     <tr class="even pointer">
 
-                                                                        <td>@t.Id</td>
+                                                                 
                                                                         @if (sesion == "Admin")
                                                                         {
                                                                             if (t.User != null)
@@ -294,8 +294,18 @@
                                                                         <td>@t.dr</td>
                                                                         <td>@t.cr</td>
                                                                         @{
-                                                                        var tt = Convert.ToInt64(t.balance);
-                                                                        var balance = String.Format("{0:#,##0.00}", tt);
+                                                                              
+                                                                           if (t.cr > 0)
+                                                                           {
+                                                                               balance = balance + t.cr;
+                                                                           }
+                                                                           else
+                                                                           {
+                                                                               balance = balance - t.dr;
+                                                                           }
+                                                                       
+                                                                     //   var tt = Convert.ToInt64(t.balance);
+                                                                     //   var balance = String.Format("{0:#,##0.00}", tt);
                                                                         }
                                                                         <td> @balance</td>
 
