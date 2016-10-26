@@ -1,6 +1,7 @@
 ﻿@model List<ranglerz_project.Models.TemporaryReport>
 @{
     ViewBag.Title = "ViewTempReports";
+    string values = null;
   
 }
 
@@ -118,11 +119,13 @@
                                                         <td>@v.item</td>
                                                         @if(v.voucher_type =="SV" || v.voucher_type =="PV" || v.voucher_type=="UPPV" || v.voucher_type =="UPSV")
                                                         {
-                                                            <td>@v.quantity</td>
+                                                            values = (String.Format("{0:0,0}", v.quantity));
+                                                            <td>@values</td>
                                                         }
                                                         else
                                                         {
-                                                            <td>@v.amount</td>
+                                                            values = (String.Format("{0:0,0}", v.amount));
+                                                            <td>@values</td>
                                                         }
                                                        
 

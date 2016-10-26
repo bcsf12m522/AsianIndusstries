@@ -8,7 +8,9 @@
     var totalDebit = 0;
     var totalCredit = 0;
     var totalBalance = 0;
-    
+    string values = null;
+    string drCommas = null;
+    string crCommas = null;
 }
 
 
@@ -183,7 +185,8 @@
 
                                                     result1 = DateTime.Compare(ViewBag.start, Convert.ToDateTime(t.created_at));
                                                     result2 = DateTime.Compare(ViewBag.end, Convert.ToDateTime(t.created_at));
-
+                                                    crCommas = (String.Format("{0:0,0}", t.cr));
+                                                    drCommas = (String.Format("{0:0,0}", t.dr));
 
                                                     if (result1 < 0 || result1 == 0)
                                                     {
@@ -217,8 +220,8 @@
                                                                 <td>@t.description <strong> From :</strong>  @t.from_account <strong>To :</strong>   @t.to_account </td>
 
 
-                                                                <td>@t.dr</td>
-                                                                <td>@t.cr</td>
+                                                                <td>@drCommas</td>
+                                                                <td>@crCommas</td>
                                                                 @{
 
                                                                 if (t.cr > 0)
@@ -232,8 +235,9 @@
 
                                                                 //   var tt = Convert.ToInt64(t.balance);
                                                                 //   var balance = String.Format("{0:#,##0.00}", tt);
+                                                                values = (String.Format("{0:0,0}", balance));
                                                                 }
-                                                                <td> @balance</td>
+                                                                <td> @values</td>
                                                                 @{
                                                                 totalBalance = totalBalance + balance;
                                                                 totalCredit = (int)(totalCredit + t.cr);
