@@ -4,6 +4,11 @@
     var sesion = Session["name"].ToString();
     int result1;
     int result2;
+    var balance = 0;
+    var totalDebit = 0;
+    var totalCredit = 0;
+    var totalBalance = 0;
+    
 }
 
 
@@ -111,8 +116,8 @@
 
 
                                 </select>
-                                <input type="date" name="dateStart" required />
-                                <input type="date" name="dateEnd" required />
+                                <input type="date" id="dateDefault" name="dateStart" required />
+                                <input type="date" id="dateDefault2" name="dateEnd" required />
                             </div>
                             <div class="col-md-6 col-sm-6 col-xs-12">
 
@@ -134,24 +139,6 @@
                    
                    
                    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
                     <div class="row">
 
@@ -233,13 +220,32 @@
                                                                 <td>@t.dr</td>
                                                                 <td>@t.cr</td>
                                                                 @{
-                                                                var tt = Convert.ToInt64(t.balance);
-                                                                var balance = String.Format("{0:#,##0.00}", tt);
+
+                                                                if (t.cr > 0)
+                                                                {
+                                                                    balance = (int)(balance + t.cr);
+                                                                }
+                                                                else
+                                                                {
+                                                                    balance =(int) (balance - t.dr);
+                                                                }
+
+                                                                //   var tt = Convert.ToInt64(t.balance);
+                                                                //   var balance = String.Format("{0:#,##0.00}", tt);
                                                                 }
                                                                 <td> @balance</td>
+                                                                @{
+                                                                totalBalance = totalBalance + balance;
+                                                                totalCredit = (int)(totalCredit + t.cr);
+                                                                totalDebit = (int)(totalDebit + t.dr);
+                                                                }
 
 
 
+
+
+
+                                                              
 
 
 
@@ -253,10 +259,13 @@
                                                 }
 
                                             }
-                                            }
+                                         }
                                         </tbody>
 
                                     </table>
+                                    <p><strong>Total Balance:&nbsp;&nbsp;</strong>@totalBalance</p>
+                                    <p><strong>Total Credit:&nbsp;&nbsp;&nbsp;</strong>@totalCredit</p>
+                                    <p><strong>Total Debit:&nbsp;&nbsp;&nbsp;</strong>@totalDebit</p>
                                 </div>
                             </div>
                         </div>
@@ -282,6 +291,55 @@
         return confirm('are you sure?');
     }
     </script>
+
+    <script>
+    function setInputDate(_id) {
+        var _dat = document.querySelector(_id);
+        var hoy = new Date(),
+            d = hoy.getDate(),
+            m = hoy.getMonth() + 1,
+            y = hoy.getFullYear(),
+            data;
+
+        if (d < 10) {
+            d = "0" + d;
+        };
+        if (m < 10) {
+            m = "0" + m;
+        };
+
+        data = y + "-" + m + "-" + d;
+        console.log(data);
+        _dat.value = data;
+    };
+
+    setInputDate("#dateDefault");
+    </script>
+    <script>
+        function setInputDate(_id) {
+            var _dat = document.querySelector(_id);
+            var hoy = new Date(),
+                d = hoy.getDate(),
+                m = hoy.getMonth() + 1,
+                y = hoy.getFullYear(),
+                data;
+
+            if (d < 10) {
+                d = "0" + d;
+            };
+            if (m < 10) {
+                m = "0" + m;
+            };
+
+            data = y + "-" + m + "-" + d;
+            console.log(data);
+            _dat.value = data;
+        };
+
+        setInputDate("#dateDefault2");
+    </script>
+
+
 
 
 

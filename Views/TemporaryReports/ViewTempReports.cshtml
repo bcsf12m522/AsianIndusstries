@@ -1,6 +1,7 @@
 ﻿@model List<ranglerz_project.Models.TemporaryReport>
 @{
     ViewBag.Title = "ViewTempReports";
+  
 }
 
 <head>
@@ -103,7 +104,7 @@
 
                                                     
                                                     
-                                                        <td class=" ">@v.created_at</td>
+                                                        <td class=" ">@v.created_at.ToShortDateString()</td>
                                                         <td class=" ">@v.user </td>
                                                         <td class=" ">
                                                             @v.voucher_type
@@ -115,8 +116,15 @@
                                                         <td>@v.from_account</td>
                                                         <td>@v.to_account</td>
                                                         <td>@v.item</td>
-                                                        <td>@v.amount</td>
-
+                                                        @if(v.voucher_type =="SV" || v.voucher_type =="PV" || v.voucher_type=="UPPV" || v.voucher_type =="UPSV")
+                                                        {
+                                                            <td>@v.quantity</td>
+                                                        }
+                                                        else
+                                                        {
+                                                            <td>@v.amount</td>
+                                                        }
+                                                       
 
                                                         <td>
                                                     
@@ -159,6 +167,7 @@
                                         </tbody>
 
                                     </table>
+                                 
                                 </div>
                             </div>
                         </div>
