@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<ranglerz_project.Models.User_Ristriction_Accounts>
+@{
 
     ViewBag.Title = "User Creation";
 }
@@ -225,12 +226,6 @@
 
 
 
-
-
-
-
-
-
                                             </div>
                                         </div>
 
@@ -287,42 +282,6 @@
 
                                             </div>
                                         </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -452,13 +411,30 @@
 
 
 
+                                        <div class="clearfix"></div>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Accounts Permissions</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                            <div id="gender" class="btn-group" style="margin-top:8px;">
+                                                
+                                            
+
+
+                                                @foreach(var name in Model)
+                                                {
+                                                    
+                                             
+                                                <input type="checkbox" name="@name.Name_" value="@name.Name_"><label>@name.Name_</label>
+                                                  
+                                                }
+                                         
 
 
 
 
 
-
-
+                                            </div>
+                                        </div>
 
 
 
