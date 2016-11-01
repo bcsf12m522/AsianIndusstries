@@ -13,6 +13,9 @@
     string values =null;
     string debCommas = null;
     string crCommas = null;
+    string totalBalanceCommas = null;
+    string totalCreditCommas = null;
+    string totaldebitCommas = null;
 }
 
 
@@ -184,6 +187,7 @@
                                                     result2 = DateTime.Compare(ViewBag.end, t.created_at);
                                                     debCommas =(String.Format("{0:0,0}",t.dr));
                                                     crCommas =(String.Format("{0:0,0}", t.cr));
+                                                    
                                                 if(result1 < 0 || result1 == 0)
                                                    
                                                 {  
@@ -198,11 +202,14 @@
                                                                        {
                                                                        <td>@t.User.name</td>
                                                                        }
-                                                                       else if(@t.Admin!=null)
+                                                                       
+                                                                       else if(t.Admin!=null)
                                                                        {
                                                                                 <td>@t.Admin.username</td>
-                                                                       }
-                                                                   }
+                                                                    }
+                                                                   
+                                                                    }
+                                                                   
                                                                     <td>@t.created_at.ToShortDateString()</td>
                                                    
                                                       
@@ -231,11 +238,14 @@
                                                                  //   var balanceTotal = String.Format("{0:#,##0.00}",tt);
                                                                        values = (String.Format("{0:0,0}", balance));
                                                                     }
+
                                                                             <td>@values</td>
+                                                                        
                                                                         @{
                                                                            totalBalance = totalBalance + balance;
                                                                            totalCredit = totalCredit + t.cr;
                                                                            totalDebit = totalDebit + t.dr;
+                                                                      
                                                                             
                                                                         }
                                                             
@@ -253,9 +263,14 @@
                                         </tbody>
 
                                     </table>
-                                    <p><strong>Total Balance:&nbsp;&nbsp;</strong>@totalBalance</p>
-                                    <p><strong>Total Credit:&nbsp;&nbsp;&nbsp;</strong>@totalCredit</p>
-                                    <p><strong>Total Debit:&nbsp;&nbsp;&nbsp;</strong>@totalDebit</p>
+                                    @{
+                                        totalCreditCommas  = (String.Format("{0:0,0}", totalCredit));
+                                        totaldebitCommas   = (String.Format("{0:0,0}", totalDebit));
+                                        totalBalanceCommas = (String.Format("{0:0,0}", totalBalance));
+                                    }
+                                    <p><strong>Total Balance:&nbsp;&nbsp;</strong>@totalBalanceCommas</p>
+                                    <p><strong>Total Credit:&nbsp;&nbsp;&nbsp;</strong>@totalCreditCommas</p>
+                                    <p><strong>Total Debit:&nbsp;&nbsp;&nbsp;</strong>@totaldebitCommas</p>
 
                                 </div>
                             </div>

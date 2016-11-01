@@ -143,7 +143,7 @@
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Deduction </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="deduction" required>
+                                            <input id="txtThirdValue" onkeyup="javascript:Add();" class="form-control col-md-7 col-xs-12" type="text" name="deduction" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -244,9 +244,12 @@
         if (isNaN(b) == true) {
             b = 0;
         }
+        var c = parseInt(document.getElementById("txtThirdValue").value);
+        if (isNaN(c) == true) {
+            c = 0;
+        }
 
-
-        document.getElementById("txtTotal").value = a - b
+        document.getElementById("txtTotal").value = a - b -c
     }
 
 

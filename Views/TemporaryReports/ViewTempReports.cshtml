@@ -116,14 +116,17 @@
                                                         <td class=" ">@v.description</td>
                                                         <td>@v.from_account</td>
                                                         <td>@v.to_account</td>
-                                                        <td>@v.item</td>
-                                                        @if(v.voucher_type =="SV" || v.voucher_type =="PV" || v.voucher_type=="UPPV" || v.voucher_type =="UPSV")
+                                                       
+                                                       
+                                                        @if (v.voucher_type == "SV" || v.voucher_type == "PV" || v.voucher_type == "UPPV" || v.voucher_type == "UPSV")
                                                         {
+                                                            <td>@v.good_.Trim()</td>
                                                             values = (String.Format("{0:0,0}", v.quantity));
                                                             <td>@values</td>
                                                         }
                                                         else
                                                         {
+                                                            <td>@v.item</td>
                                                             values = (String.Format("{0:0,0}", v.amount));
                                                             <td>@values</td>
                                                         }

@@ -37,6 +37,12 @@
     <div class="main">
         <table border="2" cellpadding="10" cellspacing="0">
             <thead>
+                @{
+                    string values = null;
+                    values = (String.Format("{0:0,0}", Model.amount));
+                    string Credit = (String.Format("{0:0,0}", Model.cr));
+                    string Debit = (String.Format("{0:0,0}", Model.dr));
+                }
                 <tr>
                     @if (Model.voucher_type == "SV")
                     {
@@ -64,7 +70,14 @@
                 </tr>
                 <tr>
                     <td colspan="3"><strong>Particular</strong>: @Model.description</td>
+                    @if(@Model.cheque_no != null)
+                    {
                     <td align="right">Chq # @Model.cheque_no</td>
+                    }
+                    else
+                    {
+                        <td align="right">Chq # NULL</td>
+                    }
                 </tr>
                 <tr>
                     <td><strong>Code</strong>
@@ -75,24 +88,24 @@
                 <tr>
                     <td>1123456664</td>
                     <td>@Model.from_account</td>
-                    <td align="center">@Model.dr</td>
-                    <td align="center">@Model.cr</td>
+                    <td align="center">@Debit</td>
+                    <td align="center">@Credit</td>
                 </tr>
                 <tr>
                     <td>0333444441</td>
                     <td>@Model.to_account</td>
-                    <td align="center">@Model.cr</td>
-                    <td align="center">@Model.dr</td>
+                    <td align="center">@Credit</td>
+                    <td align="center">@Debit</td>
                 </tr>
                 <tr>
                     <td colspan="2" align="right"><strong>Total:</strong></td>
-                    <td align="center">@Model.dr</td>
-                    <td align="center">@Model.dr</td>
+                    <td align="center">@Debit</td>
+                    <td align="center">@Debit</td>
                 </tr>
                 <tr>
                     @if (@Model.voucher_type == "BP")
                     {
-                        <td colspan="2"><strong>In Words:</strong>  @ViewBag.amount</td>
+                        <td colspan="2"><strong>In Words:</strong> @ViewBag.amount</td>
                         <td colspan="2"><strong>Tax (Rs.):</strong>  @Model.tax</td>
                     }
                     else

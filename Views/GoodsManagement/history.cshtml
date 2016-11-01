@@ -2,7 +2,7 @@
 
 @{
 
-    ViewBag.Title = "Reports";
+    ViewBag.Title = "Production Reports";
 }
 
 
@@ -80,21 +80,21 @@
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
-                            
+
                             <div class="x_content">
                                 <br />
-                                <form id="demo-form2" action="@Url.Action("historyPost", "Transactions")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                                <form id="demo-form2" action="@Url.Action("historyPost", "GoodsManagement")" method="post" data-parsley-validate class="form-horizontal form-label-left">
 
                                     <div class="form-group">
-                                      
+
                                         <div class="col-md-6 col-sm-6 col-xs-12">
                                             <select name="search" required class="form-control chzn-select col-md-7 col-xs-12">
                                                 <option value="">Please select any </option>
-                                                @foreach(var tr in Model)
-                                                { 
+                                                @foreach (var tr in Model)
+                                                {
                                                     <option value="@tr.name">@tr.MainAccount.name -> @tr.name </option>
                                                 }
-                                                
+
 
                                             </select>
                                             <input type="date" id="dateDefault" name="dateStart" required />
@@ -105,12 +105,12 @@
                                             <input type="submit" value="Search" class="btn btn-success" />
                                         </div>
                                     </div>
-                                    
-                                    
-                                    
-                                    
+
+
+
+
                             </div>
-                           
+
                             <div class="ln_solid"></div>
 
                             </form>
@@ -136,7 +136,7 @@
 
     </div>
 
-  
+
 
     <script src="~/Scripts/js/bootstrap.min.js"></script>
 
