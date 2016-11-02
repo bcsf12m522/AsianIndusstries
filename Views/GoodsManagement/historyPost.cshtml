@@ -9,11 +9,11 @@
     var balance = ViewBag.openingBalance;
     var totalDebit = 0;
     var totalCredit = 0;
-    var totalBalance = 0;
-    string values = null;
+    var totalWeight = 0;
+  
     string debCommas = null;
     string crCommas = null;
-    string totalBalanceCommas = null;
+    string totalWeightCommas = null;
     string totalCreditCommas = null;
     string totaldebitCommas = null;
 }
@@ -165,9 +165,9 @@
                                                 <th>Code </th>
                                                 <th>Description </th>
 
-                                                <th>Dr </th>
-                                                <th>Cr </th>
-                                                <th>Balance </th>
+                                                <th>Dr(KG) </th>
+                                                <th>Cr(KG) </th>
+                                     
                                                 <th>Quantity(KG)</th>
                                                 @*<th>Action</th>*@
 
@@ -182,8 +182,8 @@
                                                 {
                                                     result1 = DateTime.Compare(ViewBag.start, t.created_at);
                                                     result2 = DateTime.Compare(ViewBag.end, t.created_at);
-                                                    debCommas = (String.Format("{0:0,0}", t.dr));
-                                                    crCommas = (String.Format("{0:0,0}", t.cr));
+                                                    debCommas = (String.Format("{0:,0}", t.dr));
+                                                    crCommas = (String.Format("{0:,0}", t.cr));
 
                                                     if (result1 < 0 || result1 == 0)
                                                     {
@@ -202,32 +202,37 @@
                                                                 <td>@t.voucher_code</td>
                                                                 <td>@t.description <strong> From :</strong>  @t.from_account <strong>To :</strong>   @t.to_account </td>
 
-
-                                                                <td>@debCommas</td>
-                                                                <td>@crCommas</td>
-                                                                @{
-
-
-                                                                if (t.cr > 0)
+                                                                @if (t.dr == 0)
                                                                 {
-                                                                    balance = balance + t.cr;
+                                                                   <td>@debCommas</td>
                                                                 }
                                                                 else
                                                                 {
-                                                                    balance = balance - t.dr;
+                                                                    <td>@t.net_weight</td>
+                                                                    
+                                                                   
+                                                                    totalDebit = (int)(totalDebit + t.net_weight);
+                                                                   
                                                                 }
 
-                                                                //   var tt = Convert.ToInt64(t.balance);
-                                                                //   var balanceTotal = String.Format("{0:#,##0.00}",tt);
-                                                                values = (String.Format("{0:0,0}", balance));
+                                                                @if (t.cr == 0)
+                                                                {
+                                                                    <td>@crCommas</td>
                                                                 }
-
-                                                                <td>@values</td>
-
+                                                                else
+                                                                {
+                                                                     
+                                                                <td>@t.net_weight</td>
+                                                                
+                                                                   
+                                                                    totalCredit =(int)(totalCredit + t.net_weight);
+                                                                   
+                                                          
+                                                                }
                                                                 @{
-                                                                totalBalance = totalBalance + balance;
-                                                                totalCredit = totalCredit + t.cr;
-                                                                totalDebit = totalDebit + t.dr;
+                                                                totalWeight = (int)(totalWeight + t.net_weight);
+                                                                
+                                                          
 
 
                                                                 }
@@ -246,12 +251,13 @@
                                         </tbody>
 
                                     </table>
-                                    @{
-                                        totalCreditCommas = (String.Format("{0:0,0}", totalCredit));
-                                        totaldebitCommas = (String.Format("{0:0,0}", totalDebit));
-                                        totalBalanceCommas = (String.Format("{0:0,0}", totalBalance));
+                                    @{ 
+                                        totalWeightCommas = (String.Format("{0:,0}", totalWeight));
+                                        totalCreditCommas = (String.Format("{0:,0}", totalCredit));
+                                        totaldebitCommas = (String.Format("{0:,0}", totalDebit));
+                  
                                     }
-                                    <p><strong>Total Balance:&nbsp;&nbsp;</strong>@totalBalanceCommas</p>
+                                    <p><strong>Total Weight:&nbsp;&nbsp;&nbsp;</strong>@totalWeightCommas</p>
                                     <p><strong>Total Credit:&nbsp;&nbsp;&nbsp;</strong>@totalCreditCommas</p>
                                     <p><strong>Total Debit:&nbsp;&nbsp;&nbsp;</strong>@totaldebitCommas</p>
 
