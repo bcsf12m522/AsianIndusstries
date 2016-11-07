@@ -68,7 +68,7 @@
                             </div>
                             <div class="x_content">
                                 <br />
-                                <form id="demo-form2" action="@Url.Action("createPost", "USER_CRUD")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                                <form id="demo-form2" action="@Url.Action("createPost", "USER_CRUD")" method="post" data-parsley-validate class="form-horizontal form-label-left" new { enctype="multipart/form-data" }>
 
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">
@@ -89,7 +89,43 @@
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Password </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="password">
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="password" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">CNIC </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="cnic" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Email </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="email" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">City </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="city" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Phone # </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="phone" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Address </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="address" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="file" class="control-label col-md-3 col-sm-3 col-xs-12">Upload Image </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="file" name="image" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -366,45 +402,7 @@
 
 
                                             </div>
-                                    </div>
-
-
-
-
-
-
-                                    <div class="clearfix"></div>
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Attendence Permissions</label>
-                                    <div class="col-md-6 col-sm-6 col-xs-12">
-
-                                        <div id="gender" class="btn-group" style="margin-top:8px;">
-
-
-
-                                            <input type="checkbox" name="atdReports" value="atdReports">&nbsp; Reports &nbsp;
-
-
-                                            <input type="checkbox" name="atdView" value="atdView"> &nbsp; View  &nbsp;
-
-
-                                            <input type="checkbox" name="atdEdit" value="atdEdit"> &nbsp;Edit  &nbsp;
-
-
-
-
-                                            <input type="checkbox" name="atdAdd" value="atdAdd"> &nbsp; Add &nbsp;
-
-
-
-
-
                                         </div>
-                                    </div>
-
-
-
-
-
 
 
 
@@ -412,22 +410,25 @@
 
 
                                         <div class="clearfix"></div>
-                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Accounts Permissions</label>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Attendence Permissions</label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
 
                                             <div id="gender" class="btn-group" style="margin-top:8px;">
-                                                
-                                            
 
 
-                                                @foreach(var name in Model)
-                                                {
-                                                    
-                                             
-                                                <input type="checkbox" name="@name.Name_" value="@name.Name_"><label>@name.Name_</label>
-                                                  
-                                                }
-                                         
+
+                                                <input type="checkbox" name="atdReports" value="atdReports">&nbsp; Reports &nbsp;
+
+
+                                                <input type="checkbox" name="atdView" value="atdView"> &nbsp; View  &nbsp;
+
+
+                                                <input type="checkbox" name="atdEdit" value="atdEdit"> &nbsp;Edit  &nbsp;
+
+
+
+
+                                                <input type="checkbox" name="atdAdd" value="atdAdd"> &nbsp; Add &nbsp;
 
 
 
@@ -445,7 +446,42 @@
 
 
 
-</div>
+
+                                        <div class="clearfix"></div>
+                                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Accounts Permissions</label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+
+                                            <div id="gender" class="btn-group" style="margin-top:8px;">
+
+
+
+
+                                                @foreach (var name in Model)
+                                                {
+
+
+                                                    <input type="checkbox" name="@name.Name_" value="@name.Name_"><label>@name.Name_</label>
+
+                                                }
+
+
+
+
+
+
+                                            </div>
+                                        </div>
+
+
+
+
+
+
+
+
+
+
+                                    </div>
                                     <div class="form-group">
 
 

@@ -238,6 +238,9 @@
                                 <li>
                                     <a target="_blank" href="~/GoodsManagement/history/"><i class="fa fa-bar-chart-o"></i>Production Reports</a>
                                 </li>
+                                <li>
+                                    <a target="_blank" href="~/Transactions/BankPaymentReport/"><i class="fa fa-bar-chart-o"></i>Bank Payment Reports</a>
+                                </li>
 
                                 <li style="">
                                     <a href="~/Home/logout/"><i class="fa fa-bar-chart-o"></i> Log out</a>
@@ -312,23 +315,23 @@
                         <div class="left"></div>
                         <div class="right">
                             <span class="count_top"><i class="fa fa-user"></i> Total Accounts</span>
-                            <div class="count">0</div>
+                            <div class="count green">@ViewBag.totalAccounts</div>
                             @*<span class="count_bottom"><i class="green">4% </i> From last Week</span>*@
                         </div>
                     </div>
                     <div class="animated flipInY col-md-3 col-sm-4 col-xs-4 tile_stats_count">
                         <div class="left"></div>
                         <div class="right">
-                            <span class="count_top"><i class="fa fa-clock-o"></i> Total Employees</span>
-                            <div class="count">0</div>
+                            <span class="count_top"><i class="fa fa-user"></i> Total Employees</span>
+                            <div class="count green">@ViewBag.totalEmployees</div>
                             @*<span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span>*@
                         </div>
                     </div>
                     <div class="animated flipInY col-md-3 col-sm-4 col-xs-4 tile_stats_count">
                         <div class="left"></div>
                         <div class="right">
-                            <span class="count_top"><i class="fa fa-user"></i> Pending Transactions</span>
-                            <div class="count green">0</div>
+                            <span class="count_top"><i class="fa fa-clock-o"></i> Pending Transactions</span>
+                            <div class="count green">@ViewBag.totaltemporaryReports</div>
                             @*<span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span>*@
                         </div>
                     </div>
@@ -336,7 +339,7 @@
                         <div class="left"></div>
                         <div class="right">
                             <span class="count_top"><i class="fa fa-user"></i> Total Vouchers</span>
-                            <div class="count">0</div>
+                            <div class="count green">10</div>
                             @*<span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>*@
                         </div>
                     </div>

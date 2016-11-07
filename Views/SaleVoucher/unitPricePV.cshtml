@@ -6,13 +6,6 @@
 
 
 
-
-
-
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -88,7 +81,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>New Unit Price Purchase Voucher <small></small></h2>
+                                <h2>New Unit Price Purchase Voucher <strong>@ViewBag.Code</strong></h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
@@ -159,7 +152,7 @@
                                     <div class="form-group">
                                         <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Deduction </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="deduction" required>
+                                            <input id="txtThirdValue" onkeyup="javascript:Add();" class="form-control col-md-7 col-xs-12" type="text" name="deduction" required>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -192,6 +185,7 @@
 
                                     <input type="submit" name="actionType" value="Add Voucher" class="btn btn-success" />
                                     <input type="submit" name="actionType" value="Add and Print" class="btn btn-success" />
+                                    <input type="hidden" name="voucherCode" value="@ViewBag.Code" />
                                 </div>
                             </div>
 
@@ -242,6 +236,7 @@
     // This function is to calculate all the values of textboxes.
     //
 
+
     function Add() {
         var a, b, c, d;
         a = parseInt(document.getElementById("txtFirstValue").value);
@@ -258,10 +253,14 @@
         if (isNaN(b) == true) {
             b = 0;
         }
+        var c = parseInt(document.getElementById("txtThirdValue").value);
+        if (isNaN(c) == true) {
+            c = 0;
+        }
 
-
-        document.getElementById("txtTotal").value = a - b
+        document.getElementById("txtTotal").value = a - b - c
     }
+
 
 
 

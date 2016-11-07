@@ -1,6 +1,6 @@
 ﻿@model ranglerz_project.Models.MainAccount
 @{
-    ViewBag.Title = "Index Expense Voucher";
+    ViewBag.Title = "Expense Voucher";
 }
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -74,7 +74,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2>New Expense Voucher <small></small></h2>
+                                <h2>New Expense Voucher <strong>@ViewBag.Code</strong></h2>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
@@ -187,6 +187,7 @@
 
                                     <input type="submit" name="actionType" value="Add Voucher" class="btn btn-success" />
                                     <input type="submit" name="actionType" value="Add and Print" class="btn btn-success" />
+                                    <input type="hidden" name="voucherCode" value="@ViewBag.Code" />
                                 </div>
                             </div>
 

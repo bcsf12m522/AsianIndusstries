@@ -2,6 +2,8 @@
 @{
 
     ViewBag.Title = "User Updation";
+    var Base64 = Convert.ToBase64String(@Model.image);
+    var imgsrc = string.Format("data:img/gif;base64,{0}", Base64);
 }
 
 
@@ -95,6 +97,44 @@
                                             <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="password" value="@Model.password">
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">CNIC </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="cnic" value="@Model.cnic" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Email </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name" value="@Model.email" class="form-control col-md-7 col-xs-12" type="text" name="email" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">City </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name"   class="form-control col-md-7 col-xs-12" type="text" value="@Model.city" name="city" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Phone # </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" value="@Model.phone" name="phone" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Address </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <input id="middle-name" value="@Model.location" class="form-control col-md-7 col-xs-12" type="text" name="address" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="file" class="control-label col-md-3 col-sm-3 col-xs-12">Upload Image </label>
+                                        <div class="col-md-6 col-sm-6 col-xs-12">
+                                            <img src="@imgsrc" style="max-height:100px; max-width:100px;" />
+                                            <input id="middle-name" class="form-control col-md-7 col-xs-12" type="file" name="image">
+                                        </div>
+                                    </div>
+
                                     <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Users Module Permissions</label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">

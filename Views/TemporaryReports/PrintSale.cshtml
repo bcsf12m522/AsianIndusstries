@@ -82,25 +82,25 @@
                 <tr>
                     <td><strong>Code</strong>
                     <td><strong>Account Title</strong></td>
-                    <td align="center"><strong>Dr (Rs.) </strong></td>
-                    <td align="center"><strong>Cr (Rs.)</strong></td>
+                    <td align="center"><strong>Dr (KG) </strong></td>
+                    <td align="center"><strong>Cr (KG)</strong></td>
                 </tr>
                 <tr>
                     <td>1123456664</td>
                     <td>@Model.from_account</td>
-                    <td align="center">@Debit</td>
+                    <td align="center">@Model.net_weight</td>
                     <td align="center">@Credit</td>
                 </tr>
                 <tr>
                     <td>0333444441</td>
                     <td>@Model.to_account</td>
                     <td align="center">@Credit</td>
-                    <td align="center">@Debit</td>
+                    <td align="center">@Model.net_weight</td>
                 </tr>
                 <tr>
                     <td colspan="2" align="right"><strong>Total:</strong></td>
-                    <td align="center">@Debit</td>
-                    <td align="center">@Debit</td>
+                    <td align="center">@Model.net_weight</td>
+                    <td align="center">@Model.net_weight</td>
                 </tr>
                 <tr>
                     @if (@Model.voucher_type == "BP")

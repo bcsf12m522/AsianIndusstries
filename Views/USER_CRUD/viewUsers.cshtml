@@ -85,7 +85,13 @@
                                                 <th>Name </th>
                                                 <th>Username </th>
                                                 <th>Password </th>
-                                                <th>Creation time </th>
+                                                <th>Email</th>
+                                                <th>CNIC</th>
+                                           
+                                           
+                                                <th>Phone #</th>
+                                                <th>Image</th>
+                                           
                                                 <th>Status </th>
                                                 <th>Action </th>
                                                
@@ -103,7 +109,19 @@
                                                         <td class=" ">
                                                             @v.password 
                                                         </td>
-                                                        <td class=" ">@v.created_at</td>
+                                                       <td>@v.email</td>
+                                                        <td>@v.cnic</td>
+                                                  
+                                                  
+                                                        <td>@v.phone</td>
+                                                        <td class=" ">
+                                                            @{
+                                                    var Base64 = Convert.ToBase64String(v.image);
+                                                    var imgsrc = string.Format("data:img/gif;base64,{0}", Base64);
+                                                            }
+                                                            <img src="@imgsrc" style="max-height:100px; max-width:100px;" />
+                                                        </td>
+                                                        
                                                         @if(@v.is_active=="Y")
                                                         { 
                                                         <td class=" ">Active</td>

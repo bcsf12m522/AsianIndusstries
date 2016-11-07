@@ -158,13 +158,14 @@
                                             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
                                                 <input type="submit" name="actionType" value="Add Voucher" class="btn btn-success" />
                                                 <input type="hidden" name="id" value="@ViewBag.ID" />
+                                                <input type="hidden" name="code" value="@ViewBag.Code" />
                                                 @*<input type="submit" name="actionType" value="Add and Print" class="btn btn-success" />*@
                                             </div>
                                         </div>
 
                                     </form>
                                 }
-                                else
+                                else if (ViewBag.ID == 2)
                                 {
                                     <form id="demo-form2" action="@Url.Action("AddProduction", "GoodsManagement")" method="post" data-parsley-validate class="form-horizontal form-label-left">
 
@@ -250,10 +251,94 @@
 
                                                 <input type="submit" name="actionType" value="Add Voucher" class="btn btn-success" />
                                                 <input type="hidden" name="id" value="@ViewBag.ID" />
+                                                <input type="hidden" name="code" value="@ViewBag.Code" />
                                                 @*<input type="submit" name="actionType" value="Add and Print" class="btn btn-success" />*@
                                             </div>
                                     </form>
 
+                                }
+                                else
+                                {
+                                    <form id="demo-form2" action="@Url.Action("AddProduction", "GoodsManagement")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+
+
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">From Vendor </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" readonly value="@Model.name" type="text" name="vendor" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Good </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" readonly type="text" name="good" value="@ViewBag.good" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Weight Available </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" readonly type="text" name="weight" value="@ViewBag.weight" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Date To  </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" readonly name="dateStart" value="@ViewBag.dateStart.ToShortDateString()" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Date From </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" readonly name="dateEnd" value="@ViewBag.dateEnd.ToShortDateString()" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Bleach Oil </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="bleachOil" placeholder="Enter value without pecentage sign" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Bleach Oil Rate </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="bleachOilRate" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12"> Fat Acid  </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="fatAcid" placeholder="Enter value without pecentage sign" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12"> Fat Acid Rate  </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="fatAcidRate" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12"> FFA  </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="ffa" required>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Description </label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="description" required>
+                                            </div>
+                                        </div>
+                                        <div class="ln_solid"></div>
+                                        <div class="form-group">
+                                            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+
+                                                <input type="submit" name="actionType" value="Add Voucher" class="btn btn-success" />
+                                                <input type="hidden" name="id" value="@ViewBag.ID" />
+                                                <input type="hidden" name="code" value="@ViewBag.Code" />
+                                                @*<input type="submit" name="actionType" value="Add and Print" class="btn btn-success" />*@
+                                            </div>
+                                    </form>
                                 }
                             </div>
 

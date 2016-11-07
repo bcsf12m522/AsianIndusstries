@@ -138,7 +138,7 @@
                             <!--Second LOOP FOR HEAD ACCOUNTS-->
                             @{headcount = 0;}
 
-                            @foreach (var head in main.HeadAccounts)
+                            @foreach (var head in main.HeadAccounts.Where(x=>x.is_active=="Y"))
                             {
                                 headcount++;
                                 <div class="col-md-10">
@@ -151,7 +151,7 @@
                                             <!--Third LOOP FOR SUB HEAD ACCOUNTS-->
                                             @{subCount = 0;}
 
-                                                                                        @foreach (var sub in head.SubHeadAccounts)
+                                                                                        @foreach (var sub in head.SubHeadAccounts.Where(x=>x.is_active =="Y"))
                                             {
                                                 subCount++;
                                                                                             <div class="col-md-10">
@@ -161,7 +161,7 @@
                                                                                                     
                                                                                                     <div class="inner">
 
-                                                                                                        @foreach (var tr in sub.TransactionAccounts)
+                                                                                                        @foreach (var tr in sub.TransactionAccounts.Where(x=>x.is_active=="Y"))
                                                                                                         {
                                                                                                             <p style="background-color:#ff0000;color:#fff;padding:5px;">@tr.name</p>
                                                                                                         }
@@ -498,7 +498,7 @@
                                  Name <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="name" class="form-control col-md-7 col-xs-12">
+                                <input type="text" name="name" required class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
 
@@ -523,7 +523,7 @@
                                 Amount <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="text" name="amount" class="form-control col-md-7 col-xs-12">
+                                <input type="text" name="amount" required class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
 
@@ -554,7 +554,7 @@
                                 Date <span class="required">*</span>
                             </label>
                             <div class="col-md-6 col-sm-6 col-xs-12">
-                                <input type="date" name="date" class="form-control col-md-7 col-xs-12">
+                                <input type="date" name="date" required class="form-control col-md-7 col-xs-12">
                             </div>
                         </div>
 
@@ -997,7 +997,7 @@
  
     var a = id;
     a = $("span[id=" + a + "1]").text();
-    alert(a);
+    //alert(a);
     $("#nam").val(a);
 
     }
