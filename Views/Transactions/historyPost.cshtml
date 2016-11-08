@@ -249,7 +249,12 @@
                                                                             
                                                                         }
                                                             
-                                                                            <td><a href="@Url.Action("Edit","Transactions" , new {id= @t.Id} )">Edit</a></td>
+                                                                            <td>
+                                                                        @if(t.description !="WHT")
+                                                                        { 
+                                                                        <a href="@Url.Action("Edit","Transactions" , new {id= @t.Id} )">Edit</a>
+                                                                        }  
+                                                                            </td>
                                                     
 
                                                     
