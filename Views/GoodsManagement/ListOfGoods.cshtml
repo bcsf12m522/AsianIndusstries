@@ -1,6 +1,13 @@
 ﻿@model List<ranglerz_project.Models.Good>
 @{
     ViewBag.Title = "ViewGoods";
+    int addGoods  = Convert.ToInt32 (Session["add_goods"]);
+    int editGoods = Convert.ToInt32 (Session["edit_goods"]);
+    int deleteGoods = Convert.ToInt32(Session["delete_goods"]);
+    int unitRate = Convert.ToInt32(Session["add_unitRate"]);
+    int productionCarbon= Convert.ToInt32(Session["productionCarbon"]);
+    int productionBleach = Convert.ToInt32(Session["productionBleach"]);
+    int productionFat = Convert.ToInt32(Session["productionFat"]);
 }
 
 <!DOCTYPE html>
@@ -105,22 +112,61 @@
                                                         <td>@v.unit</td>
                                                         <td>@v.good_Type</td>
                                                         <td>@v.TransactionAccount.name</td>
-                                                        <td><a href="~/GoodsManagement/Edit/@v.Id">Edit</a>
-                                                            <a href="~/GoodsManagement/Delete/@v.Id" onclick="return confirm('Are you sure you want to Delete?')">Delete</a></td>
-                                                    </tr>
+                                                        <td>
+
+                                                        @if(editGoods == 1)
+                                                        { 
+                                                        
+                                                        <a href="~/GoodsManagement/Edit/@v.Id">Edit</a>
+                                                        }
+                                                        
+                                                        @if(deleteGoods == 1)
+                                                        { 
+                                                            <a href="~/GoodsManagement/Delete/@v.Id" onclick="return confirm('Are you sure you want to Delete?')">Delete</a>
+                                                        }
+                                                            </td>
+                                                    
+                                                            </tr>
 
                                                 </tbody>
 
 
                                             }
 
-                                            <td><input class="btn btn-success" type="submit" value="Add new" /></td>
+                                            <td>
+                                            @if(addGoods ==1)
+                                            {
+                                            <input class="btn btn-success" type="submit" value="Add new" />
+                                            }
+                                            </td>
 
-                                            <td> <a href="~/SaleVoucher/unitRate/" class="btn btn-success">Add Unit Rate</a> </td>
+                                            <td>
 
-                                            <td><a href="~/GoodsManagement/DateRange/1" class="btn btn-success">Add Production Protien/FatOIL </a></td>
-                                            <td><a href="~/GoodsManagement/DateRange/2" class="btn btn-success">Add Production tyre Oil/Carbon </a></td>
-                                            <td><a href="~/GoodsManagement/DateRange/3" class="btn btn-success">Add Production Bleach Oil/FatAcid </a></td>
+                                            @if(unitRate ==1)
+                                            { 
+                                             <a href="~/SaleVoucher/unitRate/" class="btn btn-success">Add Unit Rate</a> 
+                                            }
+                                            </td>
+
+                                            <td>
+                                             @if(productionFat ==1)
+                                             { 
+                                            <a href="~/GoodsManagement/DateRange/1" class="btn btn-success">Add Production Protien/FatOIL </a>
+                                             }
+                                             </td>
+                                            <td>
+                                                @if(productionCarbon ==1)
+                                                { 
+                                            <a href="~/GoodsManagement/DateRange/2" class="btn btn-success">Add Production tyre Oil/Carbon </a>
+                                                }
+                                            </td>
+                                            <td>
+                                                @if(productionBleach ==1)
+                                                { 
+                                            <a href="~/GoodsManagement/DateRange/3" class="btn btn-success">Add Production Bleach Oil/FatAcid </a>
+                                            
+                                                }
+                                                </td>
 
                                         </form>
                                     </table>

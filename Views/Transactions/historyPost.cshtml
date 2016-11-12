@@ -16,6 +16,8 @@
     string totalBalanceCommas = null;
     string totalCreditCommas = null;
     string totaldebitCommas = null;
+    int allReportsEdit = Convert.ToInt32 (Session["all_reports_edit"]);
+
 }
 
 
@@ -250,7 +252,7 @@
                                                                         }
                                                             
                                                                             <td>
-                                                                        @if(t.description !="WHT")
+                                                                        @if(t.description !="WHT" &&  allReportsEdit == 1)
                                                                         { 
                                                                         <a href="@Url.Action("Edit","Transactions" , new {id= @t.Id} )">Edit</a>
                                                                         }  

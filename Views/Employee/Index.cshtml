@@ -2,7 +2,11 @@
 
 
 @{
-    ViewBag.Title = "ViewUsers";
+    ViewBag.Title = "ViewEmployees";
+
+    int empAdd = Convert.ToInt32 (Session["employee_add"]);
+    int empEdit = Convert.ToInt32 (Session["employee_edit"]);
+    int empDelete = Convert.ToInt32 (Session["employee_delete"]);
 }
 
 
@@ -126,8 +130,14 @@
 
 
                                                     <td>
-                                                        <a href="~/Employee/Edit/@v.Id/">Update</a> &nbsp;&nbsp;&nbsp;
-                                                        <a href="~/Employee/Delete/@v.Id/" onclick="return confirm('Are you sure you want to Delete?')">Delete</a>&nbsp;&nbsp;&nbsp;
+                                                        @if(empEdit ==1)
+                                                        { 
+                                                        <a href="~/Employee/Edit/@v.Id/">Update</a> <label></label>
+                                                         }
+                                                        @if(empDelete ==1)
+                                                        {
+                                                        <a href="~/Employee/Delete/@v.Id/" onclick="return confirm('Are you sure you want to Delete?')">Delete</a><label></label>
+                                                        }
                                                         <a href="~/Employee/Detail/@v.Id/">View Detail</a>
                                                     </td>
 
@@ -153,7 +163,10 @@
                     </div>
                     <br />
                     <br />
+                    @if(empAdd ==1)
+                    { 
                     <a class="btn-success  actionBar" href="~/Employee/Create/">Create Employee</a>
+                    }
                 </div>
 
             </div>

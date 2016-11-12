@@ -1,6 +1,10 @@
 ﻿@model List<ranglerz_project.Models.Good_Types>
 @{
     ViewBag.Title = "ViewGoodTypes";
+    
+    int addGoods = Convert.ToInt32(Session["add_goodTypes"]);
+    int editGoods = Convert.ToInt32(Session["edit_goodTypes"]);
+    int deleteGoods = Convert.ToInt32(Session["delete_goodTypes"]);
 }
 
 <!DOCTYPE html>
@@ -101,8 +105,16 @@
 
                                                         <td>@v.type</td>
                                               
-                                                        <td><a href="~/GoodsManagement/EditGoodType/@v.Id">Edit</a> 
-                                                            <a href="~/GoodsManagement/DeleteGoodType/@v.Id" onclick="return confirm('Are you sure you want to Delete?')">Delete</a></td>                                         
+                                                        <td>
+                                                            @if(editGoods ==1)
+                                                            { 
+                                                        <a href="~/GoodsManagement/EditGoodType/@v.Id">Edit</a> 
+                                                            }
+                                                            @if(deleteGoods ==1)
+                                                            { 
+                                                        <a href="~/GoodsManagement/DeleteGoodType/@v.Id" onclick="return confirm('Are you sure you want to Delete?')">Delete</a>
+                                                            }
+                                                        </td>                                         
                                                     </tr>
 
                                                 </tbody>
@@ -110,7 +122,12 @@
 
                                             }
                                             
-                                            <td><input type="submit" value="Add new" /></td>
+                                            <td>
+                                                @if(addGoods ==1)
+                                             {
+                                            <input type="submit" value="Add new" />
+                                            }
+                                            </td>
                                           
 
                                                 

@@ -8,6 +8,10 @@
     float originalweight= 0;
     float difference = 0;
     var balance = ViewBag.openingBalance;
+ 
+    int salesReportsEdit = Convert.ToInt32(Session["sale_reports_edit"]);
+ 
+
   
 }
 
@@ -243,7 +247,16 @@
                                                                                     }
                                                                                     originalweight =(float) (originalweight + t.net_weight);
                                                                                 }
-                                                                                <td><a href="@Url.Action("Edit","SaleVoucher" , new {id= @t.Id} )">Edit</a></td>
+
+                                                                                <td>
+                                                                                  
+                                                                                @if(salesReportsEdit == 1)
+                                                                                {       
+                                                                                                
+                                                                                <a href="@Url.Action("Edit","SaleVoucher" , new {id= @t.Id} )">Edit</a>
+                                                                                
+                                                                                }
+                                                                                </td>
 
 
                                                                            

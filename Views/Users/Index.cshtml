@@ -1,5 +1,35 @@
 ﻿@model ranglerz_project.Models.User
 
+@{
+    int jv = Convert.ToInt32(Session["JV"]);
+    int br = Convert.ToInt32(Session["BR"]);
+    int bp = Convert.ToInt32(Session["BP"]);
+    int cr = Convert.ToInt32(Session["CR"]);
+    int cp = Convert.ToInt32(Session["CP"]);
+    int sv = Convert.ToInt32(Session["SV"]);
+    int pv = Convert.ToInt32(Session["PV"]);
+    int upsv = Convert.ToInt32(Session["UPSV"]);
+    int uppv = Convert.ToInt32(Session["UPPV"]);
+    int ev = Convert.ToInt32(Session["EV"]);
+    int homeScreen = Convert.ToInt32(Session["homeScreen"]);
+
+    int allReports = Convert.ToInt32(Session["all_reports"]);
+    int saleReports = Convert.ToInt32(Session["sale_reports"]);
+    int expenseReports = Convert.ToInt32(Session["expense_reports"]);
+    int viewGoods = Convert.ToInt32(Session["view_goods"]);
+    int supervision = Convert.ToInt32(Session["supervision"]);
+    int viewEmployee = Convert.ToInt32(Session["emplyee_view"]);
+    int viewAttendence = Convert.ToInt32(Session["view_attendence"]);
+    int viewGoodTypes = Convert.ToInt32(Session["view_goodTypes"]);
+    int attendenceReports = Convert.ToInt32(Session["attendence_reports"]);
+    int addAttendence = Convert.ToInt32(Session["add_attedence"]);
+
+    int addProduction = Convert.ToInt32( Session["addProduction"]);
+    int bankPamyenetReports = Convert.ToInt32(Session["bankPaymentReports"]);
+
+    
+}
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -77,13 +107,6 @@
 
 
 
-
-
-
-
-
-
-
                     <br />
 
                     <!-- sidebar menu -->
@@ -130,40 +153,94 @@
                                     <ul class="nav child_menu" style="display: none">
 
 
+                                        @if(jv==1)
+                                        {
+                                             
                                         <li>
-                                            <a href="">Journal Voucher</a>
+                                            <a target="_blank" href="~/Transactions/journal/">Journal Voucher</a>
                                         </li>
-
+                                        
+                                        }
+                                        
+                                        @if(br == 1)
+                                        {
+                                             
                                         <li>
                                             <a href="~/Transactions/bank/">Bank Recieved</a>
                                         </li>
-
+                                        
+                                        }
+                                        
+                                        @if(bp==1)
+                                        { 
+                                            
                                         <li>
                                             <a href="~/Transactions/bankPayment/">Bank Payment</a>
                                         </li>
-
+                                        
+                                        }
+                                        
+                                        @if(cp ==1)
+                                        {
+                                             
                                         <li>
                                             <a href="~/Transactions/cashPayment/">Cash Payment</a>
                                         </li>
-                                        <li>
-                                            <a href="~/Transactions/cashReceive/">Cash Receive</a>
-                                        </li>
-                                        <li>
-                                            <a href="~/SaleVoucher/">Sale Voucher</a>
-                                        </li>
-                                        <li>
-                                            <a href="~/SaleVoucher/salesReport/">Sales Report</a>
-                                        </li>
+                                        
+                                        }
+                                        
+                                         @if (cr == 1)
+                                         {
+                                            <li>
+                                                <a href="~/Transactions/cashReceive/">Cash Receive</a>
+                                            </li>
+
+                                         }
+                                        @if (sv == 1)
+                                        {
+                                            <li>
+                                                <a href="~/SaleVoucher/">Sale Voucher</a>
+                                            </li>
+
+                                        }
+                                        
+                                        
+
+                                        @if(pv == 1)
+                                        {
+                                             
                                         <li>
                                             <a href="~/SaleVoucher/purchaseVoucher/">Purchase Voucher</a>
                                         </li>
+                                        
+                                        }
+                                        
+                                        @if(upsv == 1)
+                                        {
+                                             
                                         <li>
                                             <a href="~/SaleVoucher/unitPriceSV/">UnitPriceSV</a>
                                         </li>
+                                            
+                                        }
+                                        
+                                        @if(uppv == 1)
+                                        { 
+                                            
                                         <li>
                                             <a href="~/SaleVoucher/unitPricePV/">UnitPricePV</a>
                                         </li>
                                        
+                                        }
+                                        
+                                        @if(ev ==1)
+                                        {
+                                           
+                                        <li>
+                                            <a target="_blank" href="~/ExpenseVoucher/index/">Expense Voucher</a>
+                                        </li>
+                                        
+                                        }
 
                                     </ul>
                                 </li>
@@ -177,23 +254,48 @@
 
 
 
-
+                                        @if(allReports ==1)
+                                        {
+                                             
                                         <li>
                                             <a target="_blank" href="~/Transactions/history/"><i class="fa fa-bar-chart-o"></i> All Reports</a>
 
                                         </li>
-
+                                        
+                                        }
+                                        
+                                        @if(saleReports ==1)
+                                        {
+                                             
                                         <li>
 
                                             <a target="_blank" href="~/SaleVoucher/salesReport/"><i class="fa fa-bar-chart-o"></i>Sales Report</a>
 
                                         </li>
+                                        
+                                        }
+                                        
+                                        @if(saleReports == 1)
+                                        {
+                                            
+                                        
                                         <li style="">
+
                                             <a target="_blank" href="~/SaleVoucher/salesReportByItem/"><i class="fa fa-bar-chart-o"></i> Sales Report By Item</a>
+                                        
                                         </li>
+                                            
+                                        }
+                                        
+                                        @if(expenseReports ==1)
+                                        {
+                                            
+                                      
                                         <li>
                                             <a target="_blank" href="~/ExpenseVoucher/ExpenseReports/"><i class="fa fa-bar-chart-o"></i>Expense Reports</a>
                                         </li>
+                                            
+                                        }
                                     </ul>
 
                                 </li>
@@ -209,54 +311,82 @@
 
                                     <ul class="nav child_menu" style="display: none">
 
-
+                                        @if(viewEmployee ==1)
+                                        { 
                                         <li>
                                             <a target="_blank" href="~/Employee/Index/"><i class="fa fa-bar-chart-o"></i> ALL Employees</a>
                                         </li>
-
+                                        }
+                                        
+                                        @if(addAttendence ==1)
+                                        { 
                                         <li>
                                             <a target="_blank" href="~/Employee/AttendenceSearch/1"><i class="fa fa-bar-chart-o"></i>Employees Attendence</a>
                                         </li>
+                                        }
+                                        @if(viewAttendence ==1)
+                                        { 
                                         <li>
                                             <a target="_blank" href="~/Employee/AttendenceSearch/2"><i class="fa fa-bar-chart-o"></i>View Attendence</a>
                                         </li>
+                                        }
 
 
-
-
+                                        @if(attendenceReports ==1)
+                                        { 
                                         <li>
                                             <a target="_blank" href="~/Employee/AttendenceReports/"><i class="fa fa-bar-chart-o"></i>View Attendence Reports</a>
                                         </li>
-
+                                        }
                                     </ul>
                                 </li>
+
+
+
+                                @if(supervision ==1)
+                                { 
+
                                 <li>
                                     <a target="_blank" href="~/TemporaryReports/ViewTempReports/"><i class="fa fa-bar-chart-o"></i>Super Vision</a>
                                 </li>
 
+                                }
+
+                                @if(viewGoodTypes ==1)
+                                { 
 
                                 <li>
                                     <a target="_blank" href="~/GoodsManagement/listGoodTypes/"><i class="fa fa-bar-chart-o"></i>Good Types</a>
                                 </li>
-
+                                
+                                }
+                                
+                                @if(viewGoods ==1)
+                                { 
                                 <li>
                                     <a target="_blank" href="~/GoodsManagement/listOfGoods/"><i class="fa fa-bar-chart-o"></i>Goods Management</a>
                                 </li>
+                                }
 
-
+                                @if(addProduction ==1)
+                                {
+                                    
+             
+                                <li>
+                                    <a target="_blank" href="~/GoodsManagement/history/"><i class="fa fa-bar-chart-o"></i>Production Reports</a>
+                                </li>
+                                }
+                                
+                                @if(bankPamyenetReports ==1)
+                                { 
+                                <li>
+                                    <a target="_blank" href="~/Transactions/BankPaymentReport/"><i class="fa fa-bar-chart-o"></i>Bank Payment Reports</a>
+                                </li>
+                                }
 
                                 <li style="">
                                     <a href="~/Home/logout/"><i class="fa fa-bar-chart-o"></i> Log out</a>
                                 </li>
-
-
-
-
-
-
-
-
-
 
 
 
@@ -289,50 +419,16 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <!-- /top navigation -->
             <!-- page content -->
             <div class="right_col" role="main">
 
                 <!-- top tiles -->
                 <div class="row tile_count">
+
+                    @if(homeScreen == 1)
+                    { 
+
                     <div class="animated flipInY col-md-3 col-sm-4 col-xs-4 tile_stats_count">
                         <div class="left"></div>
                         <div class="right">
@@ -365,7 +461,7 @@
                             @*<span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span>*@
                         </div>
                     </div>
-
+                    }
                 </div>
                 <!-- /top tiles -->
 
