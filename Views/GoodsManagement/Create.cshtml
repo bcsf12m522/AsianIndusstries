@@ -171,21 +171,24 @@
                                             </select>
                                         </div>
                                     </div>
-                                    @*<div class="form-group">
+
+                                    <div class="form-group">
                                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">
-                                            Vendor <span class="required">*</span>
+                                            Main Account <span class="required">*</span>
                                         </label>
                                         <div class="col-md-6 col-sm-6 col-xs-12">
-                                            <select name="vendor" required class="form-control chzn-select col-md-7 col-xs-12">
+                                            <select name="mainAccount" required class="form-control chzn-select col-md-7 col-xs-12">
                                                 <option value="">Please select any </option>
-                                                @foreach (var tr in Model)
-                                                {
-                                                    <option value="@tr.id">@tr.name </option>
-                                                }
+                                                     
+                                                <option value="1">Finished Good Inventories </option>
+                                                <option value="2">BBM Purchase Main Accounts </option>
+                                                <option value="3">Raw Materials Purchase</option>
+                                                
 
                                             </select>
                                         </div>
-                                    </div>*@
+                                    </div>
+                                   
                                     <div class="form-group">
                                         <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
 

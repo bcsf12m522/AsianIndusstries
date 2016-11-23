@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@model ranglerz_project.Models.Admin
+
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -46,11 +48,11 @@
                     <!-- menu prile quick info -->
                     <div class="profile">
                         <div class="profile_pic">
-                            <img src="~/images/img.jpg" alt="..." class="img-circle profile_img">
+                            <img src="@Session["image"]" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>Welcome,</span>
-                            <h2>@Session["name"]</h2>
+                            <h2>@Session["username"]</h2>
 
                         </div>
                     </div>
@@ -62,6 +64,7 @@
                     <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
                         <div class="menu_section">
+                         
                             <h3>General</h3>
                             <ul class="nav side-menu">
                                 <li>
@@ -162,7 +165,12 @@
 
 
                                         <li>
-                                            <a target="_blank" href="~/Transactions/history/"><i class="fa fa-bar-chart-o"></i> All Reports</a>
+                                            <a target="_blank" href="~/Transactions/history/"><i class="fa fa-bar-chart-o"></i> Ledgers</a>
+
+                                        </li>
+
+                                        <li>
+                                            <a target="_blank" href="~/Transactions/mainReports/"><i class="fa fa-bar-chart-o"></i>Main Reports</a>
 
                                         </li>
 
@@ -178,6 +186,16 @@
 
                                         <li>
                                             <a target="_blank" href="~/ExpenseVoucher/ExpenseReports/"><i class="fa fa-bar-chart-o"></i>Expense Reports</a>
+                                        </li>
+
+                                        <li>
+                                            <a target="_blank" href="~/Transactions/BankPaymentReport/"><i class="fa fa-bar-chart-o"></i>Bank Payment Reports</a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="~/SaleVoucher/purchaseReport/"><i class="fa fa-bar-chart-o"></i>Purchase Reports</a>
+                                        </li>
+                                        <li>
+                                            <a target="_blank" href="~/GoodsManagement/history/"><i class="fa fa-bar-chart-o"></i>Production Reports</a>
                                         </li>
 
                                     </ul>
@@ -236,11 +254,9 @@
 
 
                                 <li>
-                                    <a target="_blank" href="~/GoodsManagement/history/"><i class="fa fa-bar-chart-o"></i>Production Reports</a>
+                                    <a href="~/Home/ChangePasswordAdmin/@Model.Id"><i class="fa fa-bar-chart-o"></i>Change Password</a>
                                 </li>
-                                <li>
-                                    <a target="_blank" href="~/Transactions/BankPaymentReport/"><i class="fa fa-bar-chart-o"></i>Bank Payment Reports</a>
-                                </li>
+                               
 
                                 <li style="">
                                     <a href="~/Home/logout/"><i class="fa fa-bar-chart-o"></i> Log out</a>

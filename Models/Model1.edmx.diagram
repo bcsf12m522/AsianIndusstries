@@ -43,6 +43,8 @@
         <EntityTypeShape EntityType="Database1Model.User_Ristriction_Accounts" Width="1.5" PointX="12.375" PointY="11.125" />
         <EntityTypeShape EntityType="Database1Model.Permission" Width="1.5" PointX="5" PointY="16" />
         <AssociationConnector Association="Database1Model.FK_Table_UsersPermisions" />
+        <EntityTypeShape EntityType="Database1Model.Reports_Permissions" Width="1.5" PointX="5" PointY="19.875" />
+        <AssociationConnector Association="Database1Model.FK_Reports_Permissions_U" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

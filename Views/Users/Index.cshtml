@@ -26,7 +26,11 @@
 
     int addProduction = Convert.ToInt32( Session["addProduction"]);
     int bankPamyenetReports = Convert.ToInt32(Session["bankPaymentReports"]);
+    int purchaseReports = Convert.ToInt32(Session["purchase_reports"]);
 
+
+    var Base64 = Convert.ToBase64String(@Model.image);
+    var imgsrc = string.Format("data:img/gif;base64,{0}", Base64);
     
 }
 
@@ -89,12 +93,13 @@
 
                     <!-- menu prile quick info -->
                     <div class="profile">
+                       
                         <div class="profile_pic">
-                            <img src="~/images/img.jpg" alt="..." class="img-circle profile_img">
+                            <img src="@imgsrc" alt="..." class="img-circle profile_img">
                         </div>
                         <div class="profile_info">
                             <span>Welcome,</span>
-                            <h2>@Session["name"]</h2>
+                            <h2>@Session["username"]</h2>
                         </div>
                     </div>
                     <!-- /menu prile quick info -->
@@ -258,11 +263,17 @@
                                         {
                                              
                                         <li>
-                                            <a target="_blank" href="~/Transactions/history/"><i class="fa fa-bar-chart-o"></i> All Reports</a>
+                                            <a target="_blank" href="~/Transactions/history/"><i class="fa fa-bar-chart-o"></i>Ledgers</a>
 
                                         </li>
                                         
                                         }
+                                        
+
+                                        <li>
+                                            <a target="_blank" href="~/Transactions/mainReports/"><i class="fa fa-bar-chart-o"></i>Main Reports</a>
+
+                                        </li>
                                         
                                         @if(saleReports ==1)
                                         {
@@ -296,6 +307,32 @@
                                         </li>
                                             
                                         }
+                                        
+                                        @if (bankPamyenetReports == 1)
+                                        {
+                                            <li>
+                                                <a target="_blank" href="~/Transactions/BankPaymentReport/"><i class="fa fa-bar-chart-o"></i>Bank Payment Reports</a>
+                                            </li>
+                                        }
+                                        
+
+                                        @if (purchaseReports == 1)
+                                        {
+                                            <li>
+                                                <a target="_blank" href="~/SaleVoucher/purchaseReport/"><i class="fa fa-bar-chart-o"></i>Purchase Reports</a>
+                                            </li>
+                                        }
+
+
+                                        @if (addProduction == 1)
+                                        {
+
+
+                                            <li>
+                                                <a target="_blank" href="~/GoodsManagement/history/"><i class="fa fa-bar-chart-o"></i>Production Reports</a>
+                                            </li>
+                                        }
+                                        
                                     </ul>
 
                                 </li>
@@ -368,21 +405,10 @@
                                 </li>
                                 }
 
-                                @if(addProduction ==1)
-                                {
-                                    
-             
                                 <li>
-                                    <a target="_blank" href="~/GoodsManagement/history/"><i class="fa fa-bar-chart-o"></i>Production Reports</a>
+                                    <a href="~/Home/ChangePassword/@Model.Id"><i class="fa fa-bar-chart-o"></i>Change Password</a>
                                 </li>
-                                }
-                                
-                                @if(bankPamyenetReports ==1)
-                                { 
-                                <li>
-                                    <a target="_blank" href="~/Transactions/BankPaymentReport/"><i class="fa fa-bar-chart-o"></i>Bank Payment Reports</a>
-                                </li>
-                                }
+                               
 
                                 <li style="">
                                     <a href="~/Home/logout/"><i class="fa fa-bar-chart-o"></i> Log out</a>

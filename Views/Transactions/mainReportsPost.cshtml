@@ -1,21 +1,32 @@
-﻿@model List<ranglerz_project.Models.Transaction>
+﻿@model List<ranglerz_project.Models.TransactionAccount>
 @{
-    ViewBag.Title = "salesReportByItemPost";
+    ViewBag.Title = "ExpenseReportsPost";
     var sesion = Session["name"].ToString();
     int result1;
     int result2;
-    float clientWeight = 0;
-    float originalweight = 0;
-    float difference = 0;
-    
-    int salesReportsEdit = Convert.ToInt32(Session["sale_reports_edit"]);
-  
+    var balance = ViewBag.openingBalance;
+    var totalDebit = 0;
+    var totalCredit = 0;
+    var totalBalance = 0;
+    string values = null;
+    string drCommas = null;
+    string crCommas = null;
+    string totalBalanceCommas = null;
+    string totalCreditCommas = null;
+    string totaldebitCommas = null;
+
+    int expenseReportEdit = Convert.ToInt32(Session["expense_reports_edit"]);
+
+
 
 }
 
 
 
 
+
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -94,7 +105,7 @@
                     <div class="page-title">
                         <div class="title_left">
                             <h3>
-                                Sale Reports By Items
+                                Search By Transaction Account
                             </h3>
                         </div>
 
@@ -104,22 +115,36 @@
                     <div class="row">
                         <div class="x_content">
                             <br />
-                            <form id="demo-form2" action="@Url.Action("salesReportByItemPost", "SaleVoucher")" method="post" data-parsley-validate class="form-horizontal form-label-left">
+                            <form id="demo-form2" action="@Url.Action("mainReportsPost", "Transactions")" method="post" data-parsley-validate class="form-horizontal form-label-left">
 
                                 <div class="form-group">
 
                                     <div class="col-md-6 col-sm-6 col-xs-12">
                                         <select name="search" required class="form-control chzn-select col-md-7 col-xs-12">
                                             <option value="">Please select any </option>
-                                            @foreach (var tr in ViewBag.mylist)
+                                            @foreach (var tr in ViewBag.Mylist)
                                             {
-                                                <option value="@tr.good_Name"> @tr.good_Name </option>
+
+
+                                                <option value="@tr.name">@tr.MainAccount.name -> @tr.HeadAccount.name -> @tr.SubHeadAccount.name -> @tr.name </option>
+
                                             }
 
 
                                         </select>
+
                                         <input type="date" id="dateDefault" name="dateStart" required />
                                         <input type="date" id="dateDefault2" name="dateEnd" required />
+
+
+
+
+
+
+
+
+
+
                                     </div>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
 
@@ -138,19 +163,85 @@
 
                     </div>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     <div class="row">
 
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>View Sale Reports</h2>
+                                    <h2><strong>View Reports:</strong>@ViewBag.search &nbsp;&nbsp;&nbsp;<strong>Opening Balance(Rs.):</strong>@ViewBag.openingBalance</h2>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
                                     <table id="example" class="table table-striped responsive-utilities jambo_table">
                                         <thead>
                                             <tr class="headings">
-                                            
+
                                                 @if (sesion == "Admin")
                                                 {
                                                     <th>User Name</th>
@@ -161,12 +252,9 @@
                                                 <th>Code </th>
                                                 <th>Description </th>
 
-                                               
-                                                <th>Truck </th>
-                                               
-                                                <th>Item</th>
-                                                <th>Client's Weight</th>
-                                                <th>Factory Weight</th>
+                                                <th>Dr </th>
+                                                <th>Cr </th>
+                                                <th>Balance </th>
                                                 <th>Action</th>
 
                                             </tr>
@@ -174,30 +262,27 @@
 
                                         <tbody>
 
-                                            @foreach (var t in Model)
+                                            @foreach (var v in Model)
                                             {
-                                                if(t.Id %2 ==0)
+                                                foreach (var t in v.Transactions.OrderBy(x => x.created_at).ToList())
                                                 {
-                                                    continue;
-                                                }
-                                                
-                                                    if (t.voucher_type == "JV" || t.voucher_type == "BV" || t.voucher_type == "BP" || t.voucher_type == "CP" || t.voucher_type == "CR" || t.voucher_type=="PV" || t.voucher_type=="UPPV")
-                                                    {
-                                                        continue;
-                                                    }
 
-                                                    result1 = DateTime.Compare(ViewBag.start, t.created_at);
-                                                    result2 = DateTime.Compare(ViewBag.end, t.created_at);
-                                                 
+                                                    result1 = DateTime.Compare(ViewBag.start, Convert.ToDateTime(t.created_at));
+                                                    result2 = DateTime.Compare(ViewBag.end, Convert.ToDateTime(t.created_at));
+                                                    crCommas = (String.Format("{0:0,0}", t.cr));
+                                                    drCommas = (String.Format("{0:0,0}", t.dr));
 
                                                     if (result1 < 0 || result1 == 0)
                                                     {
 
+
                                                         if (result2 != -1)
                                                         {
-                                                 
+
+
                                                             <tr class="even pointer">
-                                                            
+
+
                                                                 @if (sesion == "Admin")
                                                                 {
                                                                     if (t.User != null)
@@ -209,7 +294,7 @@
                                                                         <td>@t.Admin.username</td>
                                                                     }
                                                                 }
-                                                                <td>@t.created_at.ToShortDateString()</td>
+                                                                <td>@t.created_at</td>
 
 
 
@@ -218,30 +303,44 @@
                                                                 <td>@t.voucher_code</td>
                                                                 <td>@t.description <strong> From :</strong>  @t.from_account <strong>To :</strong>   @t.to_account </td>
 
-                                                                <td>@t.truck</td>
+
+                                                                <td>@drCommas</td>
+                                                                <td>@crCommas</td>
                                                                 @{
-                                                                var tt = Convert.ToInt64(t.balance);
-                                                                var balance = String.Format("{0:#,##0.00}", tt);
-                                                                }
-                                                                
-                                                                <td> @t.good_</td>
-                                                                <td>@t.client_s_weight</td>
-                                                                <td>@t.quantity</td>
-                                                                @{
-                                                                if (t.client_s_weight != null)
+
+                                                                if (t.cr > 0)
                                                                 {
-                                                                    clientWeight = (float)(clientWeight + t.client_s_weight);
+                                                                    balance = (int)(t.cr + balance);
                                                                 }
-                                                                originalweight = (float)(originalweight + t.net_weight);
+                                                                else
+                                                                {
+                                                                    balance = (int)(balance - t.dr);
                                                                 }
+
+                                                                //   var tt = Convert.ToInt64(t.balance);
+                                                                //   var balance = String.Format("{0:#,##0.00}", tt);
+                                                                values = (String.Format("{0:0,0}", balance));
+                                                                }
+                                                                <td> @values</td>
+                                                                @{
+                                                                totalBalance = totalBalance + balance;
+                                                                totalCredit = (int)(totalCredit + t.cr);
+                                                                totalDebit = (int)(totalDebit + t.dr);
+                                                                }
+
+
+
+
+
+
+
                                                                 <td>
-                                                                @if(salesReportsEdit == 1)
-                                                                { 
-                                                                <a href="@Url.Action("Edit","SaleVoucher" , new {id= @t.Id} )">Edit</a>
-                                                                }
+                                                                    @if (expenseReportEdit == 1)
+                                                                    {
+                                                                        <a href="@Url.Action("Edit","ExpenseVoucher" , new {id= @t.Id} )">Edit</a>
+
+                                                                    }
                                                                 </td>
-
-
 
 
 
@@ -250,18 +349,19 @@
                                                     }
                                                 }
 
-                                            
-
-
+                                            }
                                         </tbody>
 
                                     </table>
                                     @{
-                                        difference = originalweight - clientWeight;
+                                        totalCreditCommas = (String.Format("{0:0,0}", totalCredit));
+                                        totaldebitCommas = (String.Format("{0:0,0}", totalDebit));
+                                        totalBalanceCommas = (String.Format("{0:0,0}", totalBalance));
                                     }
-                                    <p><strong>Client Weight :</strong>  @clientWeight</p>
-                                    <p><strong>Total Net Weight :</strong> @originalweight</p>
-                                    <p><strong>Difference :</strong> @difference</p>
+                                    <p><strong>Total Balance:&nbsp;&nbsp;</strong>@totalBalanceCommas</p>
+                                    <p><strong>Total Credit:&nbsp;&nbsp;&nbsp;</strong>@totalCreditCommas</p>
+                                    <p><strong>Total Debit:&nbsp;&nbsp;&nbsp;</strong>@totaldebitCommas</p>
+
                                 </div>
                             </div>
                         </div>
@@ -329,6 +429,21 @@
 
         setInputDate("#dateDefault2");
     </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

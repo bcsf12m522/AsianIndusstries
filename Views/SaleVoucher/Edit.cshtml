@@ -206,7 +206,7 @@
                                                     <input id="middle-name" class="form-control col-md-7 col-xs-12" value="@Model.truck" type="text" name="truck" required>
                                                 </div>
                                             </div>
-                                            @if(Model.builty_no_ !=null)
+                                            @if(Model.voucher_type =="SV" || Model.voucher_type =="UPSV")
                                             {
                                             <div class="form-group">
                                                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Builty# </label>
@@ -215,7 +215,7 @@
                                                 </div>
                                             </div>
                                             }
-                                            @if (Model.grn != null)
+                                            @if (Model.grn =="PV" || Model.voucher_type=="UPPV")
                                             {
                                                 <div class="form-group">
                                                     <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">GRN </label>
@@ -236,7 +236,7 @@
                                                     <input id="txtSecondValue" onkeyup="javascript:Add();" class="form-control col-md-7 col-xs-12" value="@Model.weight_empty" type="text" name="empty" required>
                                                 </div>
                                             </div>
-                                            @if(@Model.bags !=null)
+                                            @if (Model.voucher_type == "SV" || Model.voucher_type == "UPSV")
                                             {
                                             <div class="form-group">
                                                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Weight bags </label>
@@ -245,8 +245,8 @@
                                                 </div>
                                             </div>
                                             }
-                                            @if (@Model.deduction != null)
-                                            {
+                                        @if (Model.grn == "PV" || Model.voucher_type == "UPPV")
+                                        {
                                                 <div class="form-group">
                                                     <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Deduction </label>
                                                     <div class="col-md-6 col-sm-6 col-xs-12">
@@ -260,12 +260,16 @@
                                                     <input id="txtTotal" class="form-control col-md-7 col-xs-12" readonly type="text" value="@Model.net_weight" name="net" required>
                                                 </div>
                                             </div>
+@if (Model.grn == "SV" || Model.voucher_type == "UPSV")
+{ 
                                             <div class="form-group">
                                                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Client's Weight </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                                     <input id="txtTotal" class="form-control col-md-7 col-xs-12"  type="text" value="@Model.client_s_weight" name="clientWeight" required>
                                                 </div>
+                                                
                                             </div>
+}
                                             <div class="form-group">
                                                 <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Date </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
